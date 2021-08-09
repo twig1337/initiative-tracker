@@ -1,13 +1,23 @@
 <template>
   <tr>
     <td class="borderless">
-      <v-text-field label="Name" :value="name" />
+      <v-text-field v-model="name" label="Name" @change="emitUpdate" />
     </td>
     <td class="borderless">
-      <v-text-field type="number" label="Initiative" :value="initiative" />
+      <v-text-field v-model.number="initiative" type="number" label="Initiative" @change="emitUpdate" />
     </td>
     <td class="borderless">
-      <v-text-field type="number" label="Hit Points" :value="hp" />
+      <v-text-field v-model.number="armorClass" type="number" label="Armor Class" @change="emitUpdate" />
+    </td>
+    <td class="borderless">
+      <v-text-field v-model.number="hitPoints" type="number" label="Ht Points" @change="emitUpdate" />
+    </td>
+    <td class="borderless pa-0">
+      <v-btn icon @click="$emit('remove')">
+        <v-icon>
+          mdi-delete
+        </v-icon>
+      </v-btn>
     </td>
   </tr>
 </template>
@@ -16,10 +26,24 @@
 export default {
   name: "InitiativeElement",
   props: {
-    name: { type: String, default: '' },
-    initiative: { type: Number, default: null },
-    hp: { type: Number, default: null }
+    nameInit: { type: String, default: '' },
+    initiativeInit: { type: Number, default: null },
+    armorClassInit: { type: Number, default: null },
+    hitPointsInit: { type: Number, default: null }
   },
+  data () {
+    return {
+      name: this.nameInit,
+      initiative: this.initiativeInit,
+      armorClass: this.armorClassInit,
+      hitPoints: this.hitPointsInit
+    }
+  },
+  methods: {
+    emitUpdate () {
+      this.$emit('update', this.$data)
+    }
+  }
 }
 </script>
 
