@@ -1,9 +1,9 @@
 <template>
   <v-app light>
     <v-app-bar app flat="flat" color="white">
-      <v-btn text>
-        <v-icon>mdi-account</v-icon>
-      </v-btn>
+      <v-toolbar-title>
+        <v-img max-width="75" contain src="/logo.png" style="transform: scaleX(-1);" />
+      </v-toolbar-title>
     </v-app-bar>
 
     <v-main>

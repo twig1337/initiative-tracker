@@ -9,34 +9,41 @@
           justify="center"
       >
         <v-col class="col-1">
-          <v-btn
-              icon
-              large
-              outlined
-              class="mt-1 ml-1"
-              @click="addInitiativeElement"
-          >
-            <v-icon>mdi-plus</v-icon>
-          </v-btn>
+          <v-tooltip top>
+            <template #activator="{ on, attrs }">
+              <v-btn
+                  icon
+                  large
+                  outlined
+                  class="mt-1 ml-1"
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="addInitiativeElement"
+              >
+                <v-icon>mdi-plus</v-icon>
+              </v-btn>
+            </template>
+            <div>Add Actor</div>
+          </v-tooltip>
         </v-col>
+
         <v-col>
-            <v-simple-table class="initiative-stack overflow-y-auto py-2" trans>
-              <template #default>
-                <tbody>
-                <InitiativeElement
-                    v-for="(initiativeElement, index) in initiativeElements"
-                    :key="initiativeElement.id"
-                    :name-init="initiativeElement.name"
-                    :initiative-init="initiativeElement.initiative"
-                    :armor-class-init="initiativeElement.armorClass"
-                    :hit-points-init="initiativeElement.hitPoints"
-                    class="borderless"
-                    @remove="removeInitiativeElement(index)"
-                    @update="initiativeElements[index] = $event"
-                />
-                </tbody>
-              </template>
-            </v-simple-table>
+          <v-list :key="listRenders" class="initiative-stack overflow-y-auto py-2">
+            <v-list-item
+                v-for="(initiativeElement, index) in initiativeElements"
+                :key="initiativeElement.id"
+            >
+              <InitiativeElement
+                  :name-init="initiativeElement.name"
+                  :initiative-init="initiativeElement.initiative"
+                  :armor-class-init="initiativeElement.armorClass"
+                  :hit-points-init="initiativeElement.hitPoints"
+                  class="borderless"
+                  @remove="removeInitiativeElement(index)"
+                  @update="initiativeElements[index] = $event"
+              />
+            </v-list-item>
+          </v-list>
         </v-col>
       </v-row>
 
@@ -45,21 +52,68 @@
       </v-row>
 
       <v-row justify="end" class="pt-2">
-        <v-btn
-            depressed
-            small
-            :disabled="initiativeElements.length < 2"
-            @click="sortByInitiative()"
+        <v-dialog
+            v-model="verifyReset"
+            max-width="173"
         >
-          <v-icon left>mdi-sort-numeric-variant</v-icon>
-          sort initiative
-        </v-btn>
+          <template #activator="{ on: dialog }">
+            <v-tooltip bottom>
+              <template #activator="{ on: tooltip }">
+                <v-btn
+                    icon
+                    v-on="{ ...tooltip, ...dialog }"
+                    @click="verifyReset = true"
+                >
+                  <v-icon>mdi-autorenew</v-icon>
+                </v-btn>
+              </template>
+              <span>Reset Tracker</span>
+            </v-tooltip>
+          </template>
+          <v-card class="pb-1">
+            <v-card-title>
+              Are you sure?
+            </v-card-title>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                  color="success"
+                  text
+                  @click="resetInitiativeElements(); verifyReset = false"
+              >
+                Yes
+              </v-btn>
+              <v-btn
+                  color="error"
+                  text
+                  @click="verifyReset = false"
+              >
+                No
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+
+        <v-tooltip bottom>
+          <template #activator="{ on, attrs }">
+            <v-btn
+                icon
+                v-bind="attrs"
+                v-on="on"
+                @click="sortInitiativeElements()"
+            >
+              <v-icon>mdi-sort-numeric-variant</v-icon>
+            </v-btn>
+          </template>
+          <span>Sort by Initiative</span>
+        </v-tooltip>
       </v-row>
     </v-col>
   </v-row>
 </template>
 
 <script>
+import _ from 'lodash'
 import InitiativeElement from "./InitiativeElement"
 
 export default {
@@ -67,29 +121,41 @@ export default {
   components: { InitiativeElement },
   data () {
     return {
+      initiativeElements: [{ id: 1 }],
+      isSorting: true,
+      listRenders: 0,
       nextInitiativeElement: 2,
-      initiativeElements: [{ id: 1 }]
+      verifyReset: false
     }
   },
   methods: {
     addInitiativeElement () {
-      this.initiativeElements.push({
-        id: this.nextInitiativeElement++
-      })
+      this.initiativeElements.push({ id: this.nextInitiativeElement++ })
     },
 
-    removeInitiativeElement (index) {
-      this.initiativeElements.splice(index, 1)
-
+    preventEmptyList() {
       if (!this.initiativeElements.length) {
         this.addInitiativeElement()
       }
     },
 
-    sortByInitiative () {
-      console.log(this.initiativeElements);
-      this.initiativeElements.sort((a, b) => b.initiative - a.initiative)
-      console.log(this.initiativeElements);
+    removeInitiativeElement (index) {
+      this.initiativeElements.splice(index, 1)
+
+      this.preventEmptyList()
+    },
+
+    resetInitiativeElements () {
+      this.initiativeElements = [{ id: this.nextInitiativeElement++ }]
+    },
+
+    sortInitiativeElements () {
+      this.initiativeElements = _.orderBy(_.filter(this.initiativeElements, 'initiative'), 'initiative', 'desc')
+
+      this.preventEmptyList()
+
+      // Force v-list re-render.
+      this.listRenders++
     }
   }
 }

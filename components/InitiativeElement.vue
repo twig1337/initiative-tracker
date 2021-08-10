@@ -1,25 +1,37 @@
 <template>
-  <tr>
-    <td class="borderless">
+  <v-row class="initiative-element-wrap justify-space-around">
+    <v-col>
       <v-text-field v-model="name" label="Name" @change="emitUpdate" />
-    </td>
-    <td class="borderless">
+    </v-col>
+
+    <v-col>
       <v-text-field v-model.number="initiative" type="number" label="Initiative" @change="emitUpdate" />
-    </td>
-    <td class="borderless">
+    </v-col>
+
+    <v-col>
       <v-text-field v-model.number="armorClass" type="number" label="Armor Class" @change="emitUpdate" />
-    </td>
-    <td class="borderless">
+    </v-col>
+
+    <v-col>
       <v-text-field v-model.number="hitPoints" type="number" label="Ht Points" @change="emitUpdate" />
-    </td>
-    <td class="borderless pa-0">
-      <v-btn icon @click="$emit('remove')">
-        <v-icon>
-          mdi-delete
-        </v-icon>
-      </v-btn>
-    </td>
-  </tr>
+    </v-col>
+
+    <v-col class="col-1 align-self-center">
+      <v-tooltip top>
+        <template #activator="{ on, attrs }">
+          <v-btn
+              icon
+              v-bind="attrs"
+              v-on="on"
+              @click="$emit('remove')"
+          >
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
+        </template>
+        <span>Delete</span>
+      </v-tooltip>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -47,6 +59,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.initiative-element-wrap {
+  width: 100%;
+}
 </style>
