@@ -1,5 +1,12 @@
 <template>
-  <v-row class="initiative-element-wrap justify-space-around">
+  <v-row
+      :class="[
+        { 'no-gutters': $vuetify.breakpoint.mobile },
+        { 'overflow-hidden': $vuetify.breakpoint.mobile },
+        'initiative-element-wrap',
+        'justify-space-around'
+      ]"
+  >
     <v-col>
       <v-text-field v-model="name" label="Name" @change="emitUpdate" />
     </v-col>
@@ -8,11 +15,11 @@
       <v-text-field v-model.number="initiative" type="number" label="Initiative" @change="emitUpdate" />
     </v-col>
 
-    <v-col>
+    <v-col v-if="!minimal">
       <v-text-field v-model.number="armorClass" type="number" label="Armor Class" @change="emitUpdate" />
     </v-col>
 
-    <v-col>
+    <v-col v-if="!minimal">
       <v-text-field v-model.number="hitPoints" type="number" label="Ht Points" @change="emitUpdate" />
     </v-col>
 
@@ -20,6 +27,7 @@
       <v-tooltip top>
         <template #activator="{ on, attrs }">
           <v-btn
+              class="primary--text"
               icon
               v-bind="attrs"
               v-on="on"
@@ -38,6 +46,7 @@
 export default {
   name: "InitiativeElement",
   props: {
+    minimal: { type: Boolean, default: false },
     nameInit: { type: String, default: '' },
     initiativeInit: { type: Number, default: null },
     armorClassInit: { type: Number, default: null },
@@ -60,6 +69,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '~vuetify/src/styles/settings/_variables';
+
+@media #{map-get($display-breakpoints, 'sm-and-down')} {
+  .col {
+    margin-right: 10px;
+
+    &:last-child, &:nth-last-child(2) {
+      margin-right: 0;
+    }
+  }
+}
+
 .initiative-element-wrap {
   width: 100%;
 }

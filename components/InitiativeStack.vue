@@ -8,7 +8,7 @@
           align="center"
           justify="center"
       >
-        <v-col class="col-1">
+        <v-col class="col-1 d-none d-sm-flex">
           <v-tooltip top>
             <template #activator="{ on, attrs }">
               <v-btn
@@ -32,8 +32,10 @@
             <v-list-item
                 v-for="(initiativeElement, index) in initiativeElements"
                 :key="initiativeElement.id"
+                class="pa-0"
             >
               <InitiativeElement
+                  :minimal="isMinimal"
                   :name-init="initiativeElement.name"
                   :initiative-init="initiativeElement.initiative"
                   :armor-class-init="initiativeElement.armorClass"
@@ -48,10 +50,42 @@
       </v-row>
 
       <v-row>
-        <v-divider />
+        <v-divider :class="{ 'mx-2': isMinimal }" />
       </v-row>
 
       <v-row justify="end" class="pt-2">
+        <!-- Sort -->
+        <v-tooltip bottom>
+          <template #activator="{ on, attrs }">
+            <v-btn
+                icon
+                v-bind="attrs"
+                v-on="on"
+                @click="sortInitiativeElements()"
+            >
+              <v-icon>mdi-sort-numeric-variant</v-icon>
+            </v-btn>
+          </template>
+          <span>Sort by Initiative</span>
+        </v-tooltip>
+
+        <!-- Minimize -->
+        <v-tooltip bottom>
+          <template #activator="{ on, attrs }">
+            <v-btn
+                icon
+                :class="{ 'primary--text': isMinimal, }"
+                v-bind="attrs"
+                v-on="on"
+                @click="isMinimal = !isMinimal"
+            >
+              <v-icon>mdi-arrow-collapse-vertical</v-icon>
+            </v-btn>
+          </template>
+          <div class="text-center">{{ isMinimal ? 'Disable' : 'Enable' }} <br /> Minimal Mode</div>
+        </v-tooltip>
+
+        <!-- Reset -->
         <v-dialog
             v-model="verifyReset"
             max-width="173"
@@ -93,19 +127,23 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
+      </v-row>
 
-        <v-tooltip bottom>
+      <v-row justify="center" class="d-sm-none">
+        <v-tooltip top>
           <template #activator="{ on, attrs }">
             <v-btn
                 icon
+                large
+                outlined
                 v-bind="attrs"
                 v-on="on"
-                @click="sortInitiativeElements()"
+                @click="addInitiativeElement"
             >
-              <v-icon>mdi-sort-numeric-variant</v-icon>
+              <v-icon>mdi-plus</v-icon>
             </v-btn>
           </template>
-          <span>Sort by Initiative</span>
+          <div>Add Actor</div>
         </v-tooltip>
       </v-row>
     </v-col>
@@ -122,18 +160,26 @@ export default {
   data () {
     return {
       initiativeElements: [{ id: 1 }],
+      isMinimal: false,
       isSorting: true,
       listRenders: 0,
       nextInitiativeElement: 2,
       verifyReset: false
     }
   },
+
+  mounted () {
+    this.$nextTick(() => {
+      this.isMinimal = this.$vuetify.breakpoint.mobile = this.$vuetify.breakpoint.width < 600
+    })
+  },
+
   methods: {
     addInitiativeElement () {
       this.initiativeElements.push({ id: this.nextInitiativeElement++ })
     },
 
-    preventEmptyList() {
+    preventEmptyList () {
       if (!this.initiativeElements.length) {
         this.addInitiativeElement()
       }
