@@ -14,11 +14,18 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { hid: 'description', name: 'description', content: 'A simple and clean D&D 5e initiative tracker.' },
+      { name: 'format-detection', content: 'telephone=no' },
+      { name: 'msapplication-TileColor', content: '#e30711' },
+      { name: 'theme-color', content: '#e30711' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+      { rel: 'manifest', href: '/site.webmanifest' },
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#e30711' }
     ]
   },
 
@@ -62,8 +69,7 @@ export default {
 
   // Google Analytics module configuration: https://google-analytics.nuxtjs.org/setup
   googleAnalytics: {
-    id: 'G-LDLSFPPM4P',
-    dev: process.env.NODE_ENV !== 'production'
+    id: process.env.GOOGLE_ANALYTICS_ID
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

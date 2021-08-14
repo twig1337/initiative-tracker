@@ -28,7 +28,7 @@
         </v-col>
 
         <v-col>
-          <v-list :key="listRenders" class="initiative-stack overflow-y-auto py-2">
+          <v-list :key="listRenders" class="overflow-visible py-2">
             <v-list-item
                 v-for="(initiativeElement, index) in initiativeElements"
                 :key="initiativeElement.id"
@@ -50,7 +50,7 @@
       </v-row>
 
       <v-row>
-        <v-divider :class="{ 'mx-2': isMinimal }" />
+        <v-divider light :class="{ 'mx-2': isMinimal }" />
       </v-row>
 
       <v-row justify="end" class="pt-2">
@@ -111,14 +111,14 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn
-                  color="success"
+                  color="primary"
                   text
                   @click="resetInitiativeElements(); verifyReset = false"
               >
                 Yes
               </v-btn>
               <v-btn
-                  color="error"
+                  color="gray"
                   text
                   @click="verifyReset = false"
               >
@@ -208,7 +208,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.initiative-stack {
-  max-height: 66vh;
-}
+
 </style>

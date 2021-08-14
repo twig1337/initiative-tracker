@@ -1,3 +1,32 @@
+// Configuration
+
+$primary-color: #e30711;
+
+// Overrides
+
+.v-toolbar__content {
+  border-bottom: 2px solid $primary-color !important;
+}
+
+// Utilities
+
 .borderless {
   border-bottom: none !important;
+}
+
+.w100 {
+  width: 100%;
+}
+
+// Generators
+
+$colors: ('primary': $primary-color);
+$sides: 'top', 'right', 'bottom', 'left';
+
+@each $color, $hexCode in $colors {
+  @each $side in $sides {
+    .border-#{$side}-#{$color} {
+      border-#{$side}: 2px solid $hexCode !important;
+    }
+  }
 }
