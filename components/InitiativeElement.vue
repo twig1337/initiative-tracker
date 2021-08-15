@@ -12,7 +12,11 @@
     </v-col>
 
     <v-col>
-      <v-text-field v-model.number="initiative" type="number" label="Initiative" @change="emitUpdate" />
+      <v-text-field v-model.number="initiative" label="Initiative" type="number" @change="emitUpdate">
+        <v-icon slot="append" color="primary" @click="rollInitiative">
+          mdi-dice
+        </v-icon>
+      </v-text-field>
     </v-col>
 
     <v-col v-if="!minimal">
@@ -43,6 +47,8 @@
 </template>
 
 <script>
+import _ from "lodash"
+
 export default {
   name: "InitiativeElement",
   props: {
@@ -63,6 +69,10 @@ export default {
   methods: {
     emitUpdate () {
       this.$emit('update', this.$data)
+    },
+
+    rollInitiative () {
+      this.initiative = _.random(1, 20)
     }
   }
 }
