@@ -15,7 +15,8 @@
                   icon
                   large
                   outlined
-                  class="mt-1 ml-1"
+                  class="mt-1 ml-1 primary--text"
+                  style="border-color: #e30711"
                   v-bind="attrs"
                   v-on="on"
                   @click="addInitiativeElement"
@@ -50,7 +51,7 @@
       </v-row>
 
       <v-row>
-        <v-divider light :class="{ 'mx-2': isMinimal }" />
+        <v-divider light :class="{ 'mx-2': isMinimal }" style="border-color: rgba(227,7,17,0.25)"/>
       </v-row>
 
       <v-row justify="end" class="pt-2">
@@ -59,6 +60,7 @@
           <template #activator="{ on, attrs }">
             <v-btn
                 icon
+                color="primary"
                 v-bind="attrs"
                 v-on="on"
                 @click="sortInitiativeElements()"
@@ -95,6 +97,7 @@
               <template #activator="{ on: tooltip }">
                 <v-btn
                     icon
+                    color="primary"
                     v-on="{ ...tooltip, ...dialog }"
                     @click="verifyReset = true"
                 >

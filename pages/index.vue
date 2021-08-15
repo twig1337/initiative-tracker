@@ -1,5 +1,7 @@
 <template>
-  <InitiativeStack />
+  <v-container fill-height>
+    <InitiativeStack />
+  </v-container>
 </template>
 
 <script>

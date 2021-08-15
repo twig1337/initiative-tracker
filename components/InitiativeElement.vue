@@ -71,7 +71,7 @@ export default {
 <style scoped lang="scss">
 @import '~vuetify/src/styles/settings/_variables';
 
-@media #{map-get($display-breakpoints, 'sm-and-down')} {
+@media #{map-get($display-breakpoints, 'md-and-down')} {
   .col {
     margin-right: 10px;
 
