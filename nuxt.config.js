@@ -6,8 +6,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - initiative-tracker',
-    title: 'initiative-tracker',
+    titleTemplate: '%s | Dungeon Tools',
+    title: 'Initiative Tracker',
     htmlAttrs: {
       lang: 'en'
     },
