@@ -13,9 +13,19 @@
 
     <v-col>
       <v-text-field v-model.number="initiative" label="Initiative" type="number" @change="emitUpdate">
-        <v-icon slot="append" color="primary" @click="rollInitiative">
-          mdi-dice
-        </v-icon>
+        <v-tooltip slot="append" top>
+          <template #activator="{ on, attrs }">
+            <v-icon
+                color="primary"
+                v-bind="attrs"
+                v-on="on"
+                @click="rollInitiative"
+            >
+              mdi-dice-d20
+            </v-icon>
+          </template>
+          <span>Roll Initiative</span>
+        </v-tooltip>
       </v-text-field>
     </v-col>
 
