@@ -1,4 +1,4 @@
-import colors from 'vuetify/es5/util/colors'
+// import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -36,6 +36,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    // https://matteo-gabriele.gitbook.io/vue-gtag/
+    '@/plugins/gtag'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -46,9 +48,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
-    // https://google-analytics.nuxtjs.org
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/vuetify'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -65,11 +65,6 @@ export default {
         }
       }
     }
-  },
-
-  // Google Analytics module configuration: https://google-analytics.nuxtjs.org/setup
-  googleAnalytics: {
-    id: process.env.GOOGLE_ANALYTICS_ID
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
