@@ -58,7 +58,13 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/sentry'
   ],
+
+  // https://sentry.nuxtjs.org/
+  sentry: {
+    dsn: 'https://2fbd55f7644845f5a4e2e130f2c8f2ce@o231239.ingest.sentry.io/5910006'
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
