@@ -34,6 +34,11 @@ export default {
     '@/assets/main.scss'
   ],
 
+  // https://nuxtjs.org/docs/2.x/directory-structure/nuxt-config#runtimeconfig
+  publicRuntimeConfig: {
+    googleAnalyticsId: 'G-LDLSFPPM4P'
+  },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     // https://matteo-gabriele.gitbook.io/vue-gtag/
