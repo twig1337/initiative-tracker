@@ -67,6 +67,11 @@ export default {
     dsn: 'https://2fbd55f7644845f5a4e2e130f2c8f2ce@o231239.ingest.sentry.io/5910006'
   },
 
+  // https://sitemap.nuxtjs.org/
+  sitemap: {
+    hostname: 'https://initiative-tracker.dungeon.tools'
+  },
+
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
