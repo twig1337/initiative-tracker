@@ -21,7 +21,7 @@
           item-value="index"
           label="Name"
           return-object
-          @change="updateName"
+          @change="handleNameChange"
       ></v-combobox>
     </v-col>
 
@@ -107,7 +107,7 @@ export default {
       hitPoints: this.hitPointsInit,
 
       // Component State
-      fromDataSource: false,
+      advancedData: null,
 
       // Name search
       nameOptions: [],
@@ -139,12 +139,21 @@ export default {
 
     rollInitiative () {
       this.initiative = _.random(1, 20)
+      return this.initiative
     },
 
-    updateName () {
-      this.fromDataSource = _.isObject(this.name)
+    async handleNameChange () {
+      if (_.isObject(this.name)) {
+        this.advancedData = await this.$monsters.get(this.name.index)
 
-      this.name = this.fromDataSource ? this.name.name : this.name;
+        this.name = this.name.name
+        this.initiative = this.initiative || this.rollInitiative()
+        this.armorClass = this.armorClass || this.advancedData.armor_class
+        this.hitPoints = this.hitPoints || this.advancedData.hit_points
+      } else {
+        this.advancedData = null
+      }
+
       this.emitUpdate()
     }
   }
