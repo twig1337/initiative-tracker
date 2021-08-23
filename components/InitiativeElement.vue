@@ -8,13 +8,21 @@
       ]"
   >
     <v-col>
-      <v-text-field
+      <v-combobox
           v-model="name"
+          :loading="nameLoading"
+          :items="nameOptions"
+          :search-input.sync="nameSearch"
+          auto-select-first
+          cache-items
+          hide-no-data
+          hide-details
+          item-text="name"
+          item-value="index"
           label="Name"
-          autocomplete="new-password"
-          @change="emitUpdate"
-          @keyup="autocompleteName"
-      />
+          return-object
+          @change="updateName"
+      ></v-combobox>
     </v-col>
 
     <v-col>
@@ -92,23 +100,52 @@ export default {
   },
   data () {
     return {
+      // Default props
       name: this.nameInit,
       initiative: this.initiativeInit,
       armorClass: this.armorClassInit,
-      hitPoints: this.hitPointsInit
+      hitPoints: this.hitPointsInit,
+
+      // Component State
+      fromDataSource: false,
+
+      // Name search
+      nameOptions: [],
+      nameLoading: false,
+      nameSearch: null,
+      nameSelect: null,
     }
   },
+  watch: {
+    nameSearch (nameFragment) {
+      nameFragment && nameFragment !== this.nameSelect && this.queryNameSelections(nameFragment)
+    },
+  },
   methods: {
-    async autocompleteName () {
-      console.log((await this.$monsters.search([{key: 'name', value: this.name}])).results)
+    emitUpdate () {
+      this.$emit('update', {
+        name: this.name,
+        initiative: this.initiative,
+        armorClass: this.armorClass,
+        hitPoints: this.hitPoints
+      })
     },
 
-    emitUpdate () {
-      this.$emit('update', this.$data)
+    async queryNameSelections (nameFragment) {
+      this.nameLoading = true
+      this.nameOptions = (await this.$monsters.search([{ key: 'name', value: nameFragment }])).results
+      this.nameLoading = false
     },
 
     rollInitiative () {
       this.initiative = _.random(1, 20)
+    },
+
+    updateName () {
+      this.fromDataSource = _.isObject(this.name)
+
+      this.name = this.fromDataSource ? this.name.name : this.name;
+      this.emitUpdate()
     }
   }
 }
