@@ -24,7 +24,7 @@
                 <v-icon>mdi-plus</v-icon>
               </v-btn>
             </template>
-            <div>Add Actor</div>
+            <div>Add Combatant</div>
           </v-tooltip>
         </v-col>
 

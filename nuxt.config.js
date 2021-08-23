@@ -42,7 +42,10 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     // https://matteo-gabriele.gitbook.io/vue-gtag/
-    '@/plugins/gtag'
+    '@/plugins/gtag',
+
+    // Custom Plugins
+    '@/plugins/dnd5eapi'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -59,7 +62,8 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/sentry',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/axios'
   ],
 
   // https://sentry.nuxtjs.org/

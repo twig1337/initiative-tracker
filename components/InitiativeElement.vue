@@ -8,12 +8,24 @@
       ]"
   >
     <v-col>
-      <v-text-field v-model="name" label="Name" @change="emitUpdate" />
+      <v-text-field
+          v-model="name"
+          label="Name"
+          autocomplete="new-password"
+          @change="emitUpdate"
+          @keyup="autocompleteName"
+      />
     </v-col>
 
     <v-col>
-      <v-text-field v-model.number="initiative" label="Initiative" type="number" @change="emitUpdate">
-        <v-tooltip slot="append" top>
+      <v-text-field
+          v-model.number="initiative"
+          label="Initiative"
+          type="number"
+          autocomplete="new-password"
+          @change="emitUpdate"
+      >
+        <v-tooltip :slot="minimal ? 'prepend' : 'append'" top>
           <template #activator="{ on, attrs }">
             <v-icon
                 color="primary"
@@ -30,11 +42,21 @@
     </v-col>
 
     <v-col v-if="!minimal">
-      <v-text-field v-model.number="armorClass" type="number" label="Armor Class" @change="emitUpdate" />
+      <v-text-field
+          v-model.number="armorClass"
+          type="number"
+          label="Armor Class"
+          autocomplete="new-password"
+          @change="emitUpdate" />
     </v-col>
 
     <v-col v-if="!minimal">
-      <v-text-field v-model.number="hitPoints" type="number" label="Ht Points" @change="emitUpdate" />
+      <v-text-field
+          v-model.number="hitPoints"
+          type="number"
+          label="Ht Points"
+          autocomplete="new-password"
+          @change="emitUpdate" />
     </v-col>
 
     <v-col class="col-1 align-self-center">
@@ -77,6 +99,10 @@ export default {
     }
   },
   methods: {
+    async autocompleteName () {
+      console.log((await this.$monsters.search([{key: 'name', value: this.name}])).results)
+    },
+
     emitUpdate () {
       this.$emit('update', this.$data)
     },
