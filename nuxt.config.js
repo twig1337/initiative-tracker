@@ -45,7 +45,8 @@ export default {
     '@/plugins/gtag',
 
     // Custom Plugins
-    '@/plugins/dnd5eapi'
+    '@/plugins/dnd5eapi',
+    '@/plugins/toolbox'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
