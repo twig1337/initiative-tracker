@@ -37,10 +37,7 @@
             >
               <InitiativeElement
                   :minimal="isMinimal"
-                  :name-init="initiativeElement.name"
-                  :initiative-init="initiativeElement.initiative"
-                  :armor-class-init="initiativeElement.armorClass"
-                  :hit-points-init="initiativeElement.hitPoints"
+                  :args="initiativeElement"
                   class="borderless"
                   @remove="removeInitiativeElement(index)"
                   @update="initiativeElements[index] = $event"
