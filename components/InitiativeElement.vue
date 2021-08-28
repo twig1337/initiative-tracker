@@ -74,7 +74,7 @@
               icon
               v-bind="attrs"
               v-on="on"
-              @click="$emit('remove')"
+              @click="$emit('remove', id)"
           >
             <v-icon>mdi-delete</v-icon>
           </v-btn>
@@ -108,19 +108,20 @@ export default {
   data () {
     return {
       // Default props
-      name: this.args ? this.args.name : null,
-      initiative: this.args ? this.args.initiative : null,
-      armorClass: this.args ? this.args.armorClass : null,
-      hitPoints: this.args ? this.args.hitPoints : null,
+      id: this.args.id,
+      name: this.args.name,
+      initiative: this.args.initiative,
+      armorClass: this.args.armorClass,
+      hitPoints: this.args.hitPoints,
 
       // Component State
-      advancedData: this.args ? this.args.advancedData : null,
+      advancedData: this.args.advancedData,
 
       // Name search
-      nameOptions: this.args ? this.args.nameOptions : [],
-      nameLoading: this.args ? this.args.nameLoading : false,
-      nameSearch: this.args ? this.args.nameSearch : null,
-      nameSelect: this.args ? this.args.nameSelect : null,
+      nameOptions: this.args.nameOptions,
+      nameLoading: this.args.nameLoading,
+      nameSearch: this.args.nameSearch,
+      nameSelect: this.args.nameSelect,
     }
   },
   computed: {

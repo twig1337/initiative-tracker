@@ -31,7 +31,7 @@
         <v-col>
           <v-list :key="listRenders" class="overflow-visible py-2">
             <v-list-item
-                v-for="(initiativeElement, index) in initiativeElements"
+                v-for="initiativeElement in initiativeElements"
                 :key="initiativeElement.id"
                 class="pa-0"
             >
@@ -39,8 +39,8 @@
                   :minimal="isMinimal"
                   :args="initiativeElement"
                   class="borderless"
-                  @remove="removeInitiativeElement(index)"
-                  @update="initiativeElements[index] = $event"
+                  @remove="removeInitiativeElement"
+                  @update="updateInitiativeElement"
               />
             </v-list-item>
           </v-list>
@@ -48,7 +48,7 @@
       </v-row>
 
       <v-row>
-        <v-divider light :class="{ 'mx-2': isMinimal }" style="border-color: rgba(227,7,17,0.25)"/>
+        <v-divider light :class="{ 'mx-2': isMinimal }" style="border-color: rgba(227,7,17,0.25)" />
       </v-row>
 
       <v-row justify="end" class="pt-2">
@@ -185,8 +185,8 @@ export default {
       }
     },
 
-    removeInitiativeElement (index) {
-      this.initiativeElements.splice(index, 1)
+    removeInitiativeElement (id) {
+      this.initiativeElements = this.initiativeElements.filter(e => e.id !== id)
 
       this.preventEmptyList()
     },
@@ -202,6 +202,10 @@ export default {
 
       // Force v-list re-render.
       this.listRenders++
+    },
+
+    updateInitiativeElement (event) {
+      this.initiativeElements[this.initiativeElements.findIndex(e => e.id === event.id)] = event
     }
   }
 }
