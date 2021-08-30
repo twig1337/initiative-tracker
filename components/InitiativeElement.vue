@@ -12,6 +12,7 @@
           :loading="nameLoading"
           :items="nameOptions"
           :search-input.sync="nameSearch"
+          autofocus
           auto-select-first
           cache-items
           hide-no-data
@@ -169,19 +170,21 @@ export default {
       return this.initiative
     },
 
-    async handleNameChange () {
-      if (_.isObject(this.name)) {
-        this.advancedData = await this.$monsters.get(this.name.index)
+    handleNameChange () {
+      _.debounce(async () => {
+        if (_.isObject(this.name)) {
+          this.advancedData = await this.$monsters.get(this.name.index)
 
-        this.name = this.name.name
-        this.initiative = this.rollInitiative()
-        this.armorClass = this.advancedData.armor_class
-        this.hitPoints = this.advancedData.hit_points
-      } else {
-        this.advancedData = null
-      }
+          this.name = this.name.name
+          this.initiative = this.rollInitiative()
+          this.armorClass = this.advancedData.armor_class
+          this.hitPoints = this.advancedData.hit_points
+        } else {
+          this.advancedData = null
+        }
 
-      this.emitUpdate()
+        this.emitUpdate()
+      }, 10)()
     }
   }
 }

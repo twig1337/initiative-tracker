@@ -1,5 +1,9 @@
 # initiative-tracker
 
+## TODO
+
+* Instead of filtering out rows with `null` initiative during sorting, use the error messages system of inputs to callout the missing initiatives instead.
+
 ## Build Setup
 
 ```bash
