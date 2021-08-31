@@ -1,0 +1,17 @@
+{
+  "providers": [
+    "awscloudformation"
+  ],
+  "projectName": "initiativetracker",
+  "version": "3.1",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "vue",
+    "config": {
+      "SourceDir": "/",
+      "DistributionDir": "dist",
+      "BuildCommand": "yarn generate",
+      "StartCommand": "yarn dev"
+    }
+  }
+}
