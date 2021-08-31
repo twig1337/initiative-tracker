@@ -1,0 +1,6 @@
+type ContactUsSubmission @model @auth(rules: [{ allow: public, operations: [create] }]) {
+    id: ID!
+    type: String!
+    content: String!
+    email: AWSEmail
+}

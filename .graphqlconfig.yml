@@ -1,0 +1,13 @@
+projects:
+  initiativetracker:
+    schemaPath: >-
+      Users/tellsworth/Repositories/personal/initiative-tracker/graphql/schema.json
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql

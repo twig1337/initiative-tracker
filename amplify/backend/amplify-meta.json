@@ -11,5 +11,69 @@
       "StackId": "arn:aws:cloudformation:us-west-2:758946988348:stack/amplify-amplify9fd197a6ea584-staging-211714/5474da20-fed7-11eb-aba3-0685333ae6bf",
       "AmplifyAppId": "d3ujfu9xzb33ha"
     }
+  },
+  "api": {
+    "initiativetracker": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7,
+              "description": "Initiative Tracker API Key"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "vxa6jelr5bdpnb6gmq3lniam7e",
+        "GraphQLAPIEndpointOutput": "https://l6l7unwcgrd23ndoiba6x7b4my.appsync-api.us-west-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-hqakkb3ecrc3hc4agqclntzkim"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiinitiativetracker"
+      },
+      "lastPushTimeStamp": "2021-08-31T05:28:31.504Z",
+      "lastPushDirHash": "OOM2bqQdvJ0L82uO1JG7pixIKSM="
+    }
+  },
+  "function": {
+    "initiativetrackercontactus": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "initiativetracker",
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ]
+        }
+      ],
+      "lastBuildTimeStamp": "2021-08-31T05:23:40.856Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2021-08-31T05:23:40.913Z",
+      "distZipFilename": "initiativetrackercontactus-2b5356634f4e6575484b-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
+        "s3Key": "amplify-builds/initiativetrackercontactus-2b5356634f4e6575484b-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/initiativetrackercontactus-cloudformation-template.json",
+        "logicalId": "functioninitiativetrackercontactus"
+      },
+      "lastPushTimeStamp": "2021-08-31T05:28:31.504Z",
+      "output": {
+        "Region": "us-west-2",
+        "Arn": "arn:aws:lambda:us-west-2:758946988348:function:initiativetrackercontactus-staging",
+        "Name": "initiativetrackercontactus-staging",
+        "LambdaExecutionRole": "initiativetrackerLambdaRole45c4075e-staging"
+      },
+      "lastPushDirHash": "qvky6OtqtsjO/TB01316iGZ2pGY="
+    }
   }
 }
