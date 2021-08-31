@@ -2,7 +2,13 @@
 
 ## TODO
 
-* Instead of filtering out rows with `null` initiative during sorting, use the error messages system of inputs to callout the missing initiatives instead.
+1. Add a "report a bug and/or contact us" feature
+2. Instead of filtering out rows with `null` initiative during sorting, use the error messages system of inputs to callout the missing initiatives instead.
+3. Auto generate pages for all monsters, provide link on name
+4. Save a character function
+5. Feature request form
+6. Updates feed
+7. Auto generate pages for spells and other stuff? 
 
 ## Build Setup
 
