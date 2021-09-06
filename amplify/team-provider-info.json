@@ -16,7 +16,7 @@
         "initiativetrackercontactus": {
           "sesDefaultToAddress": "taellsworth@gmail.com",
           "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-          "s3Key": "amplify-builds/initiativetrackercontactus-2b5356634f4e6575484b-build.zip"
+          "s3Key": "amplify-builds/initiativetrackercontactus-536a676d56475138364e-build.zip"
         }
       }
     }

@@ -35,7 +35,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apiinitiativetracker"
       },
-      "lastPushTimeStamp": "2021-08-31T05:28:31.504Z",
+      "lastPushTimeStamp": "2021-09-06T03:25:20.219Z",
       "lastPushDirHash": "OOM2bqQdvJ0L82uO1JG7pixIKSM="
     }
   },
@@ -54,26 +54,26 @@
           ]
         }
       ],
-      "lastBuildTimeStamp": "2021-08-31T05:23:40.856Z",
+      "lastBuildTimeStamp": "2021-09-06T03:23:42.720Z",
       "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2021-08-31T05:23:40.913Z",
-      "distZipFilename": "initiativetrackercontactus-2b5356634f4e6575484b-build.zip",
+      "lastPackageTimeStamp": "2021-09-06T03:23:42.763Z",
+      "distZipFilename": "initiativetrackercontactus-536a676d56475138364e-build.zip",
       "s3Bucket": {
         "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-        "s3Key": "amplify-builds/initiativetrackercontactus-2b5356634f4e6575484b-build.zip"
+        "s3Key": "amplify-builds/initiativetrackercontactus-536a676d56475138364e-build.zip"
       },
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/initiativetrackercontactus-cloudformation-template.json",
         "logicalId": "functioninitiativetrackercontactus"
       },
-      "lastPushTimeStamp": "2021-08-31T05:28:31.504Z",
+      "lastPushTimeStamp": "2021-09-06T03:25:20.225Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:758946988348:function:initiativetrackercontactus-staging",
         "Name": "initiativetrackercontactus-staging",
         "LambdaExecutionRole": "initiativetrackerLambdaRole45c4075e-staging"
       },
-      "lastPushDirHash": "qvky6OtqtsjO/TB01316iGZ2pGY="
+      "lastPushDirHash": "EuktXWmsflDHkDbraOefK8WFy1A="
     }
   }
 }

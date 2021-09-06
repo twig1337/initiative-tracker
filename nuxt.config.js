@@ -44,6 +44,9 @@ export default {
     // https://matteo-gabriele.gitbook.io/vue-gtag/
     '@/plugins/gtag',
 
+    // https://docs.amplify.aws/
+    '@/plugins/amplify',
+
     // Custom Plugins
     '@/plugins/dnd5eapi',
     '@/plugins/toolbox'

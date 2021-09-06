@@ -7,7 +7,9 @@ exports.handler = async (event) => {
 
       const type = streamedItem.dynamodb.NewImage.type.S
       const content = streamedItem.dynamodb.NewImage.content.S
-      const userEmail = streamedItem.dynamodb.NewImage.email.S || 'no-reply'
+
+      let userEmail = streamedItem.dynamodb.NewImage.email
+      userEmail = userEmail ? userEmail.S : 'no-reply'
 
       await ses
         .sendEmail({
