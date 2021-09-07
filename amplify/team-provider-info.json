@@ -17,7 +17,23 @@
           "sesDefaultToAddress": "taellsworth@gmail.com",
           "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
           "s3Key": "amplify-builds/initiativetrackercontactus-536a676d56475138364e-build.zip"
+        },
+        "initiativetracker5788ade4DefineAuthChallenge": {
+          "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
+          "s3Key": "amplify-builds/initiativetracker5788ade4DefineAuthChallenge-324f556a445269654368-build.zip"
+        },
+        "initiativetracker5788ade4CreateAuthChallenge": {
+          "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
+          "s3Key": "amplify-builds/initiativetracker5788ade4CreateAuthChallenge-55497842554731594d33-build.zip"
+        },
+        "initiativetracker5788ade4VerifyAuthChallengeResponse": {
+          "RECAPTCHASECRET": "6LfhbE0cAAAAAFpgvd3W4-8vZT2AGJU_-2M1JmQs",
+          "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
+          "s3Key": "amplify-builds/initiativetracker5788ade4VerifyAuthChallengeResponse-58366e536f7262674f6d-build.zip"
         }
+      },
+      "auth": {
+        "initiativetracker5788ade4": {}
       }
     }
   }

@@ -13,6 +13,7 @@ export const createContactUsSubmission = /* GraphQL */ `
       email
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -28,6 +29,7 @@ export const updateContactUsSubmission = /* GraphQL */ `
       email
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -43,6 +45,7 @@ export const deleteContactUsSubmission = /* GraphQL */ `
       email
       createdAt
       updatedAt
+      owner
     }
   }
 `;

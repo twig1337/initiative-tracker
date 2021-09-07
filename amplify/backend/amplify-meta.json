@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-amplify9fd197a6ea584-staging-211714-unauthRole",
       "StackName": "amplify-amplify9fd197a6ea584-staging-211714",
       "StackId": "arn:aws:cloudformation:us-west-2:758946988348:stack/amplify-amplify9fd197a6ea584-staging-211714/5474da20-fed7-11eb-aba3-0685333ae6bf",
-      "AmplifyAppId": "d3ujfu9xzb33ha"
+      "AmplifyAppId": "d3ujfu9xzb33ha",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     }
   },
   "api": {
@@ -19,24 +20,26 @@
       "output": {
         "authConfig": {
           "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 7,
-              "description": "Initiative Tracker API Key"
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authinitiativetracker5788ade4"
             }
           },
-          "additionalAuthenticationProviders": []
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
         },
         "GraphQLAPIIdOutput": "vxa6jelr5bdpnb6gmq3lniam7e",
-        "GraphQLAPIEndpointOutput": "https://l6l7unwcgrd23ndoiba6x7b4my.appsync-api.us-west-2.amazonaws.com/graphql",
-        "GraphQLAPIKeyOutput": "da2-hqakkb3ecrc3hc4agqclntzkim"
+        "GraphQLAPIEndpointOutput": "https://l6l7unwcgrd23ndoiba6x7b4my.appsync-api.us-west-2.amazonaws.com/graphql"
       },
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apiinitiativetracker"
       },
-      "lastPushTimeStamp": "2021-09-06T03:25:20.219Z",
-      "lastPushDirHash": "OOM2bqQdvJ0L82uO1JG7pixIKSM="
+      "lastPushTimeStamp": "2021-09-07T03:15:31.581Z",
+      "lastPushDirHash": "v4Iyv6DUb6XdNHJUobSVGsC+wdQ="
     }
   },
   "function": {
@@ -66,7 +69,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/initiativetrackercontactus-cloudformation-template.json",
         "logicalId": "functioninitiativetrackercontactus"
       },
-      "lastPushTimeStamp": "2021-09-06T03:25:20.225Z",
+      "lastPushTimeStamp": "2021-09-07T03:15:28.696Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:758946988348:function:initiativetrackercontactus-staging",
@@ -74,6 +77,148 @@
         "LambdaExecutionRole": "initiativetrackerLambdaRole45c4075e-staging"
       },
       "lastPushDirHash": "EuktXWmsflDHkDbraOefK8WFy1A="
+    },
+    "initiativetracker5788ade4DefineAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2021-09-07T03:05:51.230Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2021-09-07T03:05:51.392Z",
+      "distZipFilename": "initiativetracker5788ade4DefineAuthChallenge-324f556a445269654368-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
+        "s3Key": "amplify-builds/initiativetracker5788ade4DefineAuthChallenge-324f556a445269654368-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/initiativetracker5788ade4DefineAuthChallenge-cloudformation-template.json",
+        "logicalId": "functioninitiativetracker5788ade4DefineAuthChallenge"
+      },
+      "lastPushTimeStamp": "2021-09-07T03:15:28.698Z",
+      "output": {
+        "Region": "us-west-2",
+        "Arn": "arn:aws:lambda:us-west-2:758946988348:function:initiativetracker5788ade4DefineAuthChallenge-staging",
+        "Name": "initiativetracker5788ade4DefineAuthChallenge-staging",
+        "LambdaExecutionRole": "initiativetracker5788ade4DefineAuthChallenge-staging"
+      },
+      "lastPushDirHash": "wd8DFo0VuUp77XdrMtBZhJ336Dc="
+    },
+    "initiativetracker5788ade4CreateAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2021-09-07T03:05:51.231Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2021-09-07T03:05:51.414Z",
+      "distZipFilename": "initiativetracker5788ade4CreateAuthChallenge-55497842554731594d33-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
+        "s3Key": "amplify-builds/initiativetracker5788ade4CreateAuthChallenge-55497842554731594d33-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/initiativetracker5788ade4CreateAuthChallenge-cloudformation-template.json",
+        "logicalId": "functioninitiativetracker5788ade4CreateAuthChallenge"
+      },
+      "lastPushTimeStamp": "2021-09-07T03:15:28.700Z",
+      "output": {
+        "Region": "us-west-2",
+        "Arn": "arn:aws:lambda:us-west-2:758946988348:function:initiativetracker5788ade4CreateAuthChallenge-staging",
+        "Name": "initiativetracker5788ade4CreateAuthChallenge-staging",
+        "LambdaExecutionRole": "initiativetracker5788ade4CreateAuthChallenge-staging"
+      },
+      "lastPushDirHash": "w/lzic3dr4g/k+NBl/YFSTSl9yY="
+    },
+    "initiativetracker5788ade4VerifyAuthChallengeResponse": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2021-09-07T03:05:51.232Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2021-09-07T03:05:51.814Z",
+      "distZipFilename": "initiativetracker5788ade4VerifyAuthChallengeResponse-58366e536f7262674f6d-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
+        "s3Key": "amplify-builds/initiativetracker5788ade4VerifyAuthChallengeResponse-58366e536f7262674f6d-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/initiativetracker5788ade4VerifyAuthChallengeResponse-cloudformation-template.json",
+        "logicalId": "functioninitiativetracker5788ade4VerifyAuthChallengeResponse"
+      },
+      "lastPushTimeStamp": "2021-09-07T03:15:28.702Z",
+      "output": {
+        "Region": "us-west-2",
+        "Arn": "arn:aws:lambda:us-west-2:758946988348:function:initiativetracker5788ade4VerifyAuthChallengeResponse-staging",
+        "Name": "initiativetracker5788ade4VerifyAuthChallengeResponse-staging",
+        "LambdaExecutionRole": "initiativetracker5788ade4VerifyAuthChallengeResponse-staging"
+      },
+      "lastPushDirHash": "cG4iVp1qRIYQNeI6gFt28FfTvlU="
+    }
+  },
+  "auth": {
+    "initiativetracker5788ade4": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "initiativetracker5788ade4DefineAuthChallenge",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "initiativetracker5788ade4CreateAuthChallenge",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "initiativetracker5788ade4VerifyAuthChallengeResponse",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ],
+      "customAuth": true,
+      "frontendAuthConfig": {
+        "loginMechanisms": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/auth/initiativetracker5788ade4-cloudformation-template.yml",
+        "logicalId": "authinitiativetracker5788ade4"
+      },
+      "lastPushTimeStamp": "2021-09-07T03:15:28.704Z",
+      "output": {
+        "UserPoolId": "us-west-2_RvTRQBnDy",
+        "AppClientIDWeb": "37ndmb86k87vtidhaji3oesvt8",
+        "AppClientID": "dseiqdcmodtvtoad1vqjfem5g",
+        "IdentityPoolId": "us-west-2:c59c8d0c-9ae5-4256-9f56-699d8fb1eeff",
+        "UserPoolArn": "arn:aws:cognito-idp:us-west-2:758946988348:userpool/us-west-2_RvTRQBnDy",
+        "IdentityPoolName": "initiativetracker5788ade4_identitypool_5788ade4__staging",
+        "UserPoolName": "initiativetracker5788ade4_userpool_5788ade4"
+      },
+      "lastPushDirHash": "CNVFzVKeUISNVPXnygt35Sppoq4="
     }
   }
 }

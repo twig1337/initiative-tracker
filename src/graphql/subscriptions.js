@@ -2,38 +2,41 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateContactUsSubmission = /* GraphQL */ `
-  subscription OnCreateContactUsSubmission {
-    onCreateContactUsSubmission {
+  subscription OnCreateContactUsSubmission($owner: String) {
+    onCreateContactUsSubmission(owner: $owner) {
       id
       type
       content
       email
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onUpdateContactUsSubmission = /* GraphQL */ `
-  subscription OnUpdateContactUsSubmission {
-    onUpdateContactUsSubmission {
+  subscription OnUpdateContactUsSubmission($owner: String) {
+    onUpdateContactUsSubmission(owner: $owner) {
       id
       type
       content
       email
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onDeleteContactUsSubmission = /* GraphQL */ `
-  subscription OnDeleteContactUsSubmission {
-    onDeleteContactUsSubmission {
+  subscription OnDeleteContactUsSubmission($owner: String) {
+    onDeleteContactUsSubmission(owner: $owner) {
       id
       type
       content
       email
       createdAt
       updatedAt
+      owner
     }
   }
 `;

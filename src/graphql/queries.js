@@ -10,6 +10,7 @@ export const getContactUsSubmission = /* GraphQL */ `
       email
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -31,6 +32,7 @@ export const listContactUsSubmissions = /* GraphQL */ `
         email
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }
