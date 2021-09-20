@@ -16,8 +16,8 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'A simple and clean D&D 5e initiative tracker.' },
       { name: 'format-detection', content: 'telephone=no' },
-      { name: 'msapplication-TileColor', content: '#e30711' },
-      { name: 'theme-color', content: '#e30711' }
+      { name: 'msapplication-TileColor', content: '#b91d47' },
+      { name: 'theme-color', content: '#ffffff' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -26,6 +26,20 @@ export default {
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
       { rel: 'manifest', href: '/site.webmanifest' },
       { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#e30711' }
+    ],
+    script: [
+      {
+        "data-name": "BMC-Widget",
+        "data-cfasync": "false",
+        "src": "https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js",
+        "data-id": "vatta",
+        "data-description": "Support me on Buy me a coffee!",
+        "data-message": "",
+        "data-color": "#ff813f",
+        "data-position": "Top",
+        "data-x_margin": "18",
+        "data-y_margin": "-61"
+      }
     ]
   },
 
@@ -36,7 +50,10 @@ export default {
 
   // https://nuxtjs.org/docs/2.x/directory-structure/nuxt-config#runtimeconfig
   publicRuntimeConfig: {
-    googleAnalyticsId: 'G-LDLSFPPM4P'
+    googleAnalyticsId: 'G-LDLSFPPM4P',
+    recaptcha: {
+      siteKey: '6LfhbE0cAAAAAEdv0F3wSQCu3J4bNAu6_IeK_yrS'
+    }
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -55,6 +72,9 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {},
+
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
@@ -67,8 +87,15 @@ export default {
   modules: [
     '@nuxtjs/sentry',
     '@nuxtjs/sitemap',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/recaptcha',
   ],
+
+  // https://www.npmjs.com/package/@nuxtjs/recaptcha
+  recaptcha: {
+    hideBadge: true,
+    version: 3
+  },
 
   // https://sentry.nuxtjs.org/
   sentry: {
@@ -90,9 +117,5 @@ export default {
         }
       }
     }
-  },
-
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
   }
 }

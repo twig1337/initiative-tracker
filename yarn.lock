@@ -2671,6 +2671,11 @@
   dependencies:
     http-proxy-middleware "^1.0.6"
 
+"@nuxtjs/recaptcha@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/recaptcha/-/recaptcha-1.0.4.tgz#a12e3faa619c82d3e003b59cb6307516c8416ec3"
+  integrity sha512-4K9cXaVGZrcXy3ys5OBL1/njkOxTpRjLDKLU/S6qatyISdGLv+tSFLSCJeEKTCO7UHC1fMCTb5UlOWajkQqPdw==
+
 "@nuxtjs/sentry@^5.1.1":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@nuxtjs/sentry/-/sentry-5.1.1.tgz#329606bf93f804d18769cf26befd6786b86e0480"

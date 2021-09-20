@@ -14,9 +14,9 @@
     "categories": {
       "function": {
         "initiativetrackercontactus": {
-          "sesDefaultToAddress": "taellsworth@gmail.com",
           "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-          "s3Key": "amplify-builds/initiativetrackercontactus-536a676d56475138364e-build.zip"
+          "s3Key": "amplify-builds/initiativetrackercontactus-536a676d56475138364e-build.zip",
+          "sesDefaultToAddress": "taellsworth@gmail.com"
         },
         "initiativetracker5788ade4DefineAuthChallenge": {
           "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",

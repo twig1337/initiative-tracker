@@ -1,7 +1,13 @@
-const aws = require('aws-sdk')
+/* Amplify Params - DO NOT EDIT
+	API_INITIATIVETRACKER_GRAPHQLAPIENDPOINTOUTPUT
+	API_INITIATIVETRACKER_GRAPHQLAPIIDOUTPUT
+	ENV
+	REGION
+Amplify Params - DO NOT EDIT */const aws = require('aws-sdk')
 const ses = new aws.SES()
 
 exports.handler = async (event) => {
+  throw new Error('moo')
   for (const streamedItem of event.Records) {
     if (streamedItem.eventName === 'INSERT') {
 

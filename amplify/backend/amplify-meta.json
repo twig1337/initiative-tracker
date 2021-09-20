@@ -38,7 +38,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apiinitiativetracker"
       },
-      "lastPushTimeStamp": "2021-09-07T03:15:31.581Z",
+      "lastPushTimeStamp": "2021-09-20T21:03:43.601Z",
       "lastPushDirHash": "v4Iyv6DUb6XdNHJUobSVGsC+wdQ="
     }
   },
@@ -57,9 +57,9 @@
           ]
         }
       ],
-      "lastBuildTimeStamp": "2021-09-06T03:23:42.720Z",
+      "lastBuildTimeStamp": "2021-09-20T04:42:09.641Z",
       "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2021-09-06T03:23:42.763Z",
+      "lastPackageTimeStamp": "2021-09-20T04:42:09.687Z",
       "distZipFilename": "initiativetrackercontactus-536a676d56475138364e-build.zip",
       "s3Bucket": {
         "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
@@ -69,7 +69,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/initiativetrackercontactus-cloudformation-template.json",
         "logicalId": "functioninitiativetrackercontactus"
       },
-      "lastPushTimeStamp": "2021-09-07T03:15:28.696Z",
+      "lastPushTimeStamp": "2021-09-20T21:10:59.992Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:758946988348:function:initiativetrackercontactus-staging",
@@ -94,7 +94,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/initiativetracker5788ade4DefineAuthChallenge-cloudformation-template.json",
         "logicalId": "functioninitiativetracker5788ade4DefineAuthChallenge"
       },
-      "lastPushTimeStamp": "2021-09-07T03:15:28.698Z",
+      "lastPushTimeStamp": "2021-09-20T21:03:43.605Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:758946988348:function:initiativetracker5788ade4DefineAuthChallenge-staging",
@@ -119,7 +119,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/initiativetracker5788ade4CreateAuthChallenge-cloudformation-template.json",
         "logicalId": "functioninitiativetracker5788ade4CreateAuthChallenge"
       },
-      "lastPushTimeStamp": "2021-09-07T03:15:28.700Z",
+      "lastPushTimeStamp": "2021-09-20T21:03:43.606Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:758946988348:function:initiativetracker5788ade4CreateAuthChallenge-staging",
@@ -144,7 +144,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/initiativetracker5788ade4VerifyAuthChallengeResponse-cloudformation-template.json",
         "logicalId": "functioninitiativetracker5788ade4VerifyAuthChallengeResponse"
       },
-      "lastPushTimeStamp": "2021-09-07T03:15:28.702Z",
+      "lastPushTimeStamp": "2021-09-20T21:03:43.608Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:758946988348:function:initiativetracker5788ade4VerifyAuthChallengeResponse-staging",
@@ -208,7 +208,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/auth/initiativetracker5788ade4-cloudformation-template.yml",
         "logicalId": "authinitiativetracker5788ade4"
       },
-      "lastPushTimeStamp": "2021-09-07T03:15:28.704Z",
+      "lastPushTimeStamp": "2021-09-20T21:03:43.609Z",
       "output": {
         "UserPoolId": "us-west-2_RvTRQBnDy",
         "AppClientIDWeb": "37ndmb86k87vtidhaji3oesvt8",
