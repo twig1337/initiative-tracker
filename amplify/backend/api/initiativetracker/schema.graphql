@@ -4,5 +4,6 @@ type ContactUsSubmission
     id: ID!
     type: String!
     content: String!
-    email: AWSEmail
+    email: AWSEmail,
+    recaptcha: String! @function(name: "ContactUsSubmissionResolver-${env}")
 }

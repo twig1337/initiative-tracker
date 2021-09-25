@@ -8,6 +8,7 @@ export const getContactUsSubmission = /* GraphQL */ `
       type
       content
       email
+      recaptcha
       createdAt
       updatedAt
       owner
@@ -30,6 +31,7 @@ export const listContactUsSubmissions = /* GraphQL */ `
         type
         content
         email
+        recaptcha
         createdAt
         updatedAt
         owner

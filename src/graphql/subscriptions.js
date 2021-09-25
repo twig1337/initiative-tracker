@@ -8,6 +8,7 @@ export const onCreateContactUsSubmission = /* GraphQL */ `
       type
       content
       email
+      recaptcha
       createdAt
       updatedAt
       owner
@@ -21,6 +22,7 @@ export const onUpdateContactUsSubmission = /* GraphQL */ `
       type
       content
       email
+      recaptcha
       createdAt
       updatedAt
       owner
@@ -34,6 +36,7 @@ export const onDeleteContactUsSubmission = /* GraphQL */ `
       type
       content
       email
+      recaptcha
       createdAt
       updatedAt
       owner

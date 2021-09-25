@@ -15,17 +15,6 @@
     },
     "s3Key": {
       "Type": "String"
-    },
-    "apiinitiativetrackerGraphQLAPIIdOutput": {
-      "Type": "String",
-      "Default": "apiinitiativetrackerGraphQLAPIIdOutput"
-    },
-    "apiinitiativetrackerGraphQLAPIEndpointOutput": {
-      "Type": "String",
-      "Default": "apiinitiativetrackerGraphQLAPIEndpointOutput"
-    },
-    "sesDefaultToAddress": {
-      "Type": "String"
     }
   },
   "Conditions": {
@@ -58,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "initiativetrackercontactus",
+            "ContactUsSubmissionResolver",
             {
               "Fn::Join": [
                 "",
                 [
-                  "initiativetrackercontactus",
+                  "ContactUsSubmissionResolver",
                   "-",
                   {
                     "Ref": "env"
@@ -80,9 +69,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "SES_DEFAULT_TO_ADDRESS": {
-              "Ref": "sesDefaultToAddress"
             }
           }
         },
@@ -103,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "initiativetrackerLambdaRole45c4075e",
+            "initiativetrackerLambdaRole89c875ef",
             {
               "Fn::Join": [
                 "",
                 [
-                  "initiativetrackerLambdaRole45c4075e",
+                  "initiativetrackerLambdaRole89c875ef",
                   "-",
                   {
                     "Ref": "env"
@@ -174,72 +160,9 @@
                   }
                 ]
               }
-            },
-            {
-              "Action": [
-                "ses:SendEmail"
-              ],
-              "Effect": "Allow",
-              "Resource": "arn:aws:ses:us-west-2:758946988348:identity/taellsworth@gmail.com"
             }
           ]
         }
-      }
-    },
-    "LambdaTriggerPolicyContactUsSubmission": {
-      "DependsOn": [
-        "LambdaExecutionRole"
-      ],
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyName": "amplify-lambda-execution-policy-ContactUsSubmission",
-        "Roles": [
-          {
-            "Ref": "LambdaExecutionRole"
-          }
-        ],
-        "PolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "dynamodb:DescribeStream",
-                "dynamodb:GetRecords",
-                "dynamodb:GetShardIterator",
-                "dynamodb:ListStreams"
-              ],
-              "Resource": {
-                "Fn::ImportValue": {
-                  "Fn::Sub": "${apiinitiativetrackerGraphQLAPIIdOutput}:GetAtt:ContactUsSubmissionTable:StreamArn"
-                }
-              }
-            }
-          ]
-        }
-      }
-    },
-    "LambdaEventSourceMappingContactUsSubmission": {
-      "Type": "AWS::Lambda::EventSourceMapping",
-      "DependsOn": [
-        "LambdaTriggerPolicyContactUsSubmission",
-        "LambdaExecutionRole"
-      ],
-      "Properties": {
-        "BatchSize": 100,
-        "Enabled": true,
-        "EventSourceArn": {
-          "Fn::ImportValue": {
-            "Fn::Sub": "${apiinitiativetrackerGraphQLAPIIdOutput}:GetAtt:ContactUsSubmissionTable:StreamArn"
-          }
-        },
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "LambdaFunction",
-            "Arn"
-          ]
-        },
-        "StartingPosition": "LATEST"
       }
     }
   },
