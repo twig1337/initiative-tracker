@@ -30,11 +30,11 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/api/dungeonTools-cloudformation-template.json",
         "logicalId": "apidungeonTools"
       },
-      "lastPushTimeStamp": "2021-09-27T02:47:16.407Z",
+      "lastPushTimeStamp": "2021-09-27T05:08:04.809Z",
       "output": {
         "ApiName": "dungeonTools",
-        "RootUrl": "https://tb8pmck533.execute-api.us-west-2.amazonaws.com/staging",
-        "ApiId": "tb8pmck533"
+        "RootUrl": "https://srhe9sc067.execute-api.us-west-2.amazonaws.com/staging",
+        "ApiId": "srhe9sc067"
       },
       "lastPushDirHash": "BpbRCaZBHHhW0U5Bwh98igCIXo4="
     }
@@ -58,26 +58,26 @@
           }
         }
       ],
-      "lastBuildTimeStamp": "2021-09-27T02:45:50.627Z",
+      "lastBuildTimeStamp": "2021-09-27T05:06:33.514Z",
       "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2021-09-27T02:45:54.359Z",
-      "distZipFilename": "SubmitContactUs-6a30597a545847506471-build.zip",
+      "lastPackageTimeStamp": "2021-09-27T05:06:37.393Z",
+      "distZipFilename": "SubmitContactUs-4f6d3144703845656b53-build.zip",
       "s3Bucket": {
         "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-        "s3Key": "amplify-builds/SubmitContactUs-6a30597a545847506471-build.zip"
+        "s3Key": "amplify-builds/SubmitContactUs-4f6d3144703845656b53-build.zip"
       },
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/SubmitContactUs-cloudformation-template.json",
         "logicalId": "functionSubmitContactUs"
       },
-      "lastPushTimeStamp": "2021-09-27T02:47:16.416Z",
+      "lastPushTimeStamp": "2021-09-27T05:08:04.817Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:758946988348:function:SubmitContactUs-staging",
         "Name": "SubmitContactUs-staging",
-        "LambdaExecutionRole": "initiativetrackerLambdaRole2128d0d2-staging"
+        "LambdaExecutionRole": "initiativetrackerLambdaRoled94d0b38-staging"
       },
-      "lastPushDirHash": "qVS55hqbvzMWycFphchs4p7UZGs="
+      "lastPushDirHash": "EHZskqQ+jrqPIK+4SjbbB5smtDY="
     }
   },
   "auth": {},
@@ -89,16 +89,18 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/storage/ContactUsSubmissions-cloudformation-template.json",
         "logicalId": "storageContactUsSubmissions"
       },
-      "lastPushTimeStamp": "2021-09-27T02:47:16.412Z",
+      "lastPushTimeStamp": "2021-09-27T05:08:04.813Z",
       "output": {
-        "PartitionKeyName": "type",
+        "PartitionKeyName": "id",
+        "SortKeyName": "createdAt",
+        "SortKeyType": "S",
         "Region": "us-west-2",
         "Arn": "arn:aws:dynamodb:us-west-2:758946988348:table/ContactUsSubmissions-staging",
-        "StreamArn": "arn:aws:dynamodb:us-west-2:758946988348:table/ContactUsSubmissions-staging/stream/2021-09-25T03:21:00.653",
+        "StreamArn": "arn:aws:dynamodb:us-west-2:758946988348:table/ContactUsSubmissions-staging/stream/2021-09-27T04:59:24.079",
         "PartitionKeyType": "S",
         "Name": "ContactUsSubmissions-staging"
       },
-      "lastPushDirHash": "2AsjBELthdZ4XbzcWFxx4NXXsyQ="
+      "lastPushDirHash": "+jLuJFvRaiurQLn0fpWLi0Psgu4="
     }
   }
 }

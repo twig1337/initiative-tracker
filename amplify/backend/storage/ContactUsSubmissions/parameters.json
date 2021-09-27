@@ -1,5 +1,7 @@
 {
     "tableName": "ContactUsSubmissions",
-    "partitionKeyName": "type",
-    "partitionKeyType": "S"
+    "partitionKeyName": "id",
+    "partitionKeyType": "S",
+    "sortKeyName": "createdAt",
+    "sortKeyType": "S"
 }

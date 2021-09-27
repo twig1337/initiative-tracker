@@ -15,8 +15,7 @@
       "function": {
         "SubmitContactUs": {
           "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-          "s3Key": "amplify-builds/SubmitContactUs-6a30597a545847506471-build.zip",
-          "sesDefaultToAddress": "taellsworth@gmail.com"
+          "s3Key": "amplify-builds/SubmitContactUs-4f6d3144703845656b53-build.zip"
         }
       }
     }

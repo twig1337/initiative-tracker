@@ -82,10 +82,10 @@
 </template>
 
 <script>
-import Amplify, { API } from 'aws-amplify';
-import awsconfig from '../aws-exports';
+import Amplify, { API } from 'aws-amplify'
+import awsconfig from '../aws-exports'
 
-Amplify.configure(awsconfig);
+Amplify.configure(awsconfig)
 
 export default {
   name: "BugReporter",
@@ -105,25 +105,31 @@ export default {
     formSuccess: ''
   }),
 
-  async mounted() {
+  async mounted () {
     try {
       await this.$recaptcha.init()
     } catch (e) {
-      this.$sentry.captureException(e);
+      this.$sentry.captureException(e)
     }
   },
 
-  beforeDestroy() {
+  beforeDestroy () {
     this.$recaptcha.destroy()
   },
 
   methods: {
-     async submit () {
+    async submit () {
       this.formSuccess = ''
       this.formErrors = []
 
       try {
-        await API.post('dungeonTools', '/contact-us', { body: { type: 'moo3', content: 'I"MA COW!' } });
+        await API.post('dungeonTools', '/contact-us', {
+          body: {
+            type: 'bug-report',
+            userEmail: this.email,
+            content: this.description
+          }
+        })
 
         this.formSuccess = 'Done and done. I appreciate you!'
         this.description = this.email = ''

@@ -23,9 +23,6 @@
     "storageContactUsSubmissionsArn": {
       "Type": "String",
       "Default": "storageContactUsSubmissionsArn"
-    },
-    "sesDefaultToAddress": {
-      "Type": "String"
     }
   },
   "Conditions": {
@@ -80,9 +77,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "SES_DEFAULT_TO_ADDRESS": {
-              "Ref": "sesDefaultToAddress"
             }
           }
         },
@@ -103,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "initiativetrackerLambdaRole2128d0d2",
+            "initiativetrackerLambdaRoled94d0b38",
             {
               "Fn::Join": [
                 "",
                 [
-                  "initiativetrackerLambdaRole2128d0d2",
+                  "initiativetrackerLambdaRoled94d0b38",
                   "-",
                   {
                     "Ref": "env"
