@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/contact-us",
+      "lambdaFunction": "SubmitContactUs",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/contact-us"
+    }
+  ],
+  "resourceName": "dungeonTools",
+  "apiName": "dungeonTools",
+  "functionArns": [
+    {
+      "lambdaFunction": "SubmitContactUs"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-amplify9fd197a6ea584-staging-211714-authRole",
+    "unAuthRoleName": "amplify-amplify9fd197a6ea584-staging-211714-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "SubmitContactUs",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

@@ -1,9 +1,0 @@
-{
-  "lambdaLayers": [],
-  "environmentVariableList": [
-    {
-      "cloudFormationParameterName": "sesDefaultToAddress",
-      "environmentVariableName": "SES_DEFAULT_TO_ADDRESS"
-    }
-  ]
-}

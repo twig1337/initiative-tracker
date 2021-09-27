@@ -13,31 +13,11 @@
     },
     "categories": {
       "function": {
-        "initiativetrackercontactus": {
+        "SubmitContactUs": {
           "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-          "s3Key": "amplify-builds/initiativetrackercontactus-32756f314a7745445849-build.zip",
+          "s3Key": "amplify-builds/SubmitContactUs-6a30597a545847506471-build.zip",
           "sesDefaultToAddress": "taellsworth@gmail.com"
-        },
-        "initiativetracker5788ade4DefineAuthChallenge": {
-          "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-          "s3Key": "amplify-builds/initiativetracker5788ade4DefineAuthChallenge-324f556a445269654368-build.zip"
-        },
-        "initiativetracker5788ade4CreateAuthChallenge": {
-          "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-          "s3Key": "amplify-builds/initiativetracker5788ade4CreateAuthChallenge-55497842554731594d33-build.zip"
-        },
-        "initiativetracker5788ade4VerifyAuthChallengeResponse": {
-          "RECAPTCHASECRET": "6LfhbE0cAAAAAFpgvd3W4-8vZT2AGJU_-2M1JmQs",
-          "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-          "s3Key": "amplify-builds/initiativetracker5788ade4VerifyAuthChallengeResponse-58366e536f7262674f6d-build.zip"
-        },
-        "ContactUsSubmissionResolver": {
-          "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-          "s3Key": "amplify-builds/ContactUsSubmissionResolver-614e736e357752583772-build.zip"
         }
-      },
-      "auth": {
-        "initiativetracker5788ade4": {}
       }
     }
   }

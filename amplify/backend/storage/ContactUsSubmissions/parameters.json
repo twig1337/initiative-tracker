@@ -1,0 +1,5 @@
+{
+    "tableName": "ContactUsSubmissions",
+    "partitionKeyName": "type",
+    "partitionKeyType": "S"
+}

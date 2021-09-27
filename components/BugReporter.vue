@@ -82,6 +82,11 @@
 </template>
 
 <script>
+import Amplify, { API } from 'aws-amplify';
+import awsconfig from '../aws-exports';
+
+Amplify.configure(awsconfig);
+
 export default {
   name: "BugReporter",
 
@@ -113,17 +118,12 @@ export default {
   },
 
   methods: {
-    async submit () {
+     async submit () {
       this.formSuccess = ''
       this.formErrors = []
 
       try {
-        await this.$contactUs.create({
-          type: 'bug-report',
-          content: this.description,
-          email: this.email || null,
-          recaptcha: await this.$recaptcha.execute('bug_report')
-        })
+        await API.post('dungeonTools', '/contact-us', { body: { type: 'moo3', content: 'I"MA COW!' } });
 
         this.formSuccess = 'Done and done. I appreciate you!'
         this.description = this.email = ''

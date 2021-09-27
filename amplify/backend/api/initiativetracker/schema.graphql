@@ -1,9 +1,0 @@
-type ContactUsSubmission
-    @model
-    @auth(rules: [{ allow: public, operations: [create], provider: iam }, { allow: owner }]) {
-    id: ID!
-    type: String!
-    content: String!
-    email: AWSEmail,
-    recaptcha: String! @function(name: "ContactUsSubmissionResolver-${env}")
-}
