@@ -127,7 +127,8 @@ export default {
           body: {
             type: 'bug-report',
             userEmail: this.email,
-            content: this.description
+            content: this.description,
+            recaptcha: await this.$recaptcha.execute('bug_report')
           }
         })
 

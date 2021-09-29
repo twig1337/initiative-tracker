@@ -1,8 +1,24 @@
+/*
+Use the following code to retrieve configured secrets from SSM:
+
+const aws = require('aws-sdk');
+
+const { Parameters } = await (new aws.SSM())
+  .getParameters({
+    Names: ["RECAPTCHA_SECRET_KEY"].map(secretName => process.env[secretName]),
+    WithDecryption: true,
+  })
+  .promise();
+
+Parameters will be of the form { Name: 'secretName', Value: 'secretValue', ... }[]
+*/
+
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args))
 const AWS = require('aws-sdk')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 const bodyParser = require('body-parser')
 const express = require('express')
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid')
 
 AWS.config.update({ region: process.env.TABLE_REGION })
 
@@ -28,7 +44,41 @@ app.use(function(req, res, next) {
   next()
 })
 
-app.post(path, function(req, res) {
+app.post(path, async function(req, res) {
+  const recaptchaSecret = (await (new AWS.SSM())
+    .getParameter({
+      Name: process.env.RECAPTCHA_SECRET_KEY,
+      WithDecryption: true,
+    })
+    .promise())
+    .Parameter
+    .Value
+
+  const token = req.body.recaptcha ?? null
+  if (!token) {
+    res.statusCode = 400
+    res.json({ error: 'Missing ReCaptcha token' })
+    return
+  }
+
+  try {
+    const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${token}`)
+    const data = await response.json()
+
+    if (!data.success) {
+      console.log('Recaptcha Data:', data)
+      res.statusCode = 400
+      res.json({ error: 'Invalid ReCaptcha token' })
+      return
+    }
+  } catch (e) {
+    console.log('ReCaptcha error:', e)
+    res.statusCode = 500
+    res.json({ error: 'ReCaptcha internal error' })
+    return
+  }
+
+  delete req.body.recaptcha
   req.body.id = uuidv4()
   req.body.createdAt = new Date().toISOString()
 
@@ -37,31 +87,32 @@ app.post(path, function(req, res) {
     Item: req.body
   }
 
-  dynamodb.put(putItemParams, async (err) => {
-    if (err) {
+  dynamodb.put(putItemParams, async (error) => {
+    if (error) {
       res.statusCode = 500
-      res.json({ error: err, url: req.url, body: req.body })
-    } else {
-      const toEmail = 'taellsworth@gmail.com'
-      const userEmail = req.body.userEmail ? req.body.userEmail : 'no-reply'
-
-      await ses
-        .sendEmail({
-          Destination: {
-            ToAddresses: [toEmail],
-          },
-          Source: toEmail,
-          Message: {
-            Subject: { Data: `Contact Us Submission [${req.body.type}]` },
-            Body: {
-              Text: { Data: `${req.body.type} submission from ${userEmail}. ${req.body.content}` },
-            },
-          },
-        })
-        .promise()
-
-      res.json({ success: 'Contact us successfully submitted', url: req.url })
+      res.json({ error })
+      return
     }
+
+    const toEmail = 'taellsworth@gmail.com'
+    const userEmail = req.body.userEmail ? req.body.userEmail : 'no-reply'
+
+    await ses
+      .sendEmail({
+        Destination: {
+          ToAddresses: [toEmail],
+        },
+        Source: toEmail,
+        Message: {
+          Subject: { Data: `Contact Us Submission [${req.body.type}]` },
+          Body: {
+            Text: { Data: `${req.body.type} submission from ${userEmail}. ${req.body.content}` },
+          },
+        },
+      })
+      .promise()
+
+    res.json({ success: 'Contact us successfully submitted' })
   })
 })
 

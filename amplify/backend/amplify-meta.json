@@ -30,7 +30,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/api/dungeonTools-cloudformation-template.json",
         "logicalId": "apidungeonTools"
       },
-      "lastPushTimeStamp": "2021-09-27T05:08:04.809Z",
+      "lastPushTimeStamp": "2021-09-29T03:53:14.608Z",
       "output": {
         "ApiName": "dungeonTools",
         "RootUrl": "https://srhe9sc067.execute-api.us-west-2.amazonaws.com/staging",
@@ -58,26 +58,26 @@
           }
         }
       ],
-      "lastBuildTimeStamp": "2021-09-27T05:06:33.514Z",
+      "lastBuildTimeStamp": "2021-09-29T03:53:15.865Z",
       "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2021-09-27T05:06:37.393Z",
-      "distZipFilename": "SubmitContactUs-4f6d3144703845656b53-build.zip",
+      "lastPackageTimeStamp": "2021-09-29T03:53:20.191Z",
+      "distZipFilename": "SubmitContactUs-46507130743043727175-build.zip",
       "s3Bucket": {
         "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-        "s3Key": "amplify-builds/SubmitContactUs-4f6d3144703845656b53-build.zip"
+        "s3Key": "amplify-builds/SubmitContactUs-77714c4545674b794162-build.zip"
       },
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/SubmitContactUs-cloudformation-template.json",
         "logicalId": "functionSubmitContactUs"
       },
-      "lastPushTimeStamp": "2021-09-27T05:08:04.817Z",
+      "lastPushTimeStamp": "2021-09-29T03:53:14.610Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:758946988348:function:SubmitContactUs-staging",
         "Name": "SubmitContactUs-staging",
         "LambdaExecutionRole": "initiativetrackerLambdaRoled94d0b38-staging"
       },
-      "lastPushDirHash": "EHZskqQ+jrqPIK+4SjbbB5smtDY="
+      "lastPushDirHash": "vPcsll9xuFqnmj1RKebOhpjvoAw="
     }
   },
   "auth": {},
@@ -89,7 +89,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/storage/ContactUsSubmissions-cloudformation-template.json",
         "logicalId": "storageContactUsSubmissions"
       },
-      "lastPushTimeStamp": "2021-09-27T05:08:04.813Z",
+      "lastPushTimeStamp": "2021-09-29T03:53:14.612Z",
       "output": {
         "PartitionKeyName": "id",
         "SortKeyName": "createdAt",

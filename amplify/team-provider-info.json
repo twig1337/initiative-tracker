@@ -15,7 +15,8 @@
       "function": {
         "SubmitContactUs": {
           "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-          "s3Key": "amplify-builds/SubmitContactUs-4f6d3144703845656b53-build.zip"
+          "s3Key": "amplify-builds/SubmitContactUs-77714c4545674b794162-build.zip",
+          "secretsPathAmplifyAppId": "d3ujfu9xzb33ha"
         }
       }
     }
