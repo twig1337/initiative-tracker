@@ -162,7 +162,7 @@ export default {
   data () {
     return {
       initiativeElements: [{ id: 1 }],
-      isMinimal: this.$device.isMobile,
+      isMinimal: this.$isMobile,
       isSorting: true,
       listRenders: 0,
       nextInitiativeElement: 2,

@@ -1,7 +1,7 @@
 <template>
   <v-app light>
     <v-navigation-drawer
-        v-if="$device.isMobile"
+        v-if="$isMobile"
         v-model="navDrawer"
         temporary
         absolute
@@ -42,10 +42,10 @@
 
       <v-spacer />
 
-      <v-app-bar-nav-icon v-if="$device.isMobile" @click.stop="navDrawer = !navDrawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon v-if="$isMobile" @click.stop="navDrawer = !navDrawer"></v-app-bar-nav-icon>
 
       <v-btn
-          v-if="!$device.isMobile"
+          v-if="!$isMobile"
           icon
           color="primary"
           @click="toggleSupportUs"
@@ -54,7 +54,7 @@
       </v-btn>
 
       <v-btn
-          v-if="!$device.isMobile"
+          v-if="!$isMobile"
           icon
           color="primary"
           @click="toggleContactUs"

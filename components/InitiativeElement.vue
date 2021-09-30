@@ -1,7 +1,7 @@
 <template>
   <v-row :class="[
-        { 'no-gutters': $device.isMobile },
-        { 'overflow-hidden': $device.isMobile },
+        { 'no-gutters': $isMobile },
+        { 'overflow-hidden': $isMobile },
         { 'pb-2': displayAdvanced },
         'justify-space-around'
       ]"
