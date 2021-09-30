@@ -1,10 +1,10 @@
 <template>
   <v-app light>
     <v-navigation-drawer
-        v-if="$isMobile"
         v-model="navDrawer"
         temporary
         absolute
+        class="d-sm-none"
     >
       <v-list nav dense>
         <v-list-item-group v-model="navDrawerActive" active-class="primary--text text--accent-4">
@@ -42,10 +42,10 @@
 
       <v-spacer />
 
-      <v-app-bar-nav-icon v-if="$isMobile" @click.stop="navDrawer = !navDrawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon class="d-sm-none" @click.stop="navDrawer = !navDrawer" />
 
       <v-btn
-          v-if="!$isMobile"
+          class="d-none d-sm-flex"
           icon
           color="primary"
           @click="toggleSupportUs"
@@ -54,7 +54,7 @@
       </v-btn>
 
       <v-btn
-          v-if="!$isMobile"
+          class="d-none d-sm-flex"
           icon
           color="primary"
           @click="toggleContactUs"
@@ -148,7 +148,7 @@ export default {
 
   watch: {
     navDrawerActive () {
-      this.navDrawer = false;
+      this.navDrawer = false
     }
   },
 

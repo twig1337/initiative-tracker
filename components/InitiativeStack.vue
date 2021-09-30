@@ -24,7 +24,7 @@
                 <v-icon>mdi-plus</v-icon>
               </v-btn>
             </template>
-            <div>Add Actor</div>
+            <div>Add Combatant</div>
           </v-tooltip>
         </v-col>
 
@@ -145,7 +145,7 @@
               <v-icon>mdi-plus</v-icon>
             </v-btn>
           </template>
-          <div>Add Actor</div>
+          <div>Add Combatant</div>
         </v-tooltip>
       </v-row>
     </v-col>
@@ -162,12 +162,18 @@ export default {
   data () {
     return {
       initiativeElements: [{ id: 1 }],
-      isMinimal: this.$isMobile,
+      isMinimal: false,
       isSorting: true,
       listRenders: 0,
       nextInitiativeElement: 2,
       verifyReset: false
     }
+  },
+
+  mounted () {
+    this.$nextTick(() => {
+      this.isMinimal = this.$vuetify.breakpoint.width < 600
+    })
   },
 
   methods: {

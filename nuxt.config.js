@@ -67,8 +67,6 @@ export default {
     // Custom Plugins
     '@/plugins/dnd5eapi',
     '@/plugins/toolbox',
-    // Inspired by https://github.com/nuxt-community/device-module
-    '@/plugins/mobileDetect'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

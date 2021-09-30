@@ -1,7 +1,7 @@
 <template>
-  <v-row :class="[
-        { 'no-gutters': $isMobile },
-        { 'overflow-hidden': $isMobile },
+  <v-row
+      id="initiative-element"
+      :class="[
         { 'pb-2': displayAdvanced },
         'justify-space-around'
       ]"
@@ -218,13 +218,19 @@ export default {
   }
 }
 
-@media #{map-get($display-breakpoints, 'sm-and-down')} {
+@media #{map-get($display-breakpoints, 'xs-only')} {
+  #initiative-element {
+    margin: 0;
+    overflow: hidden;
+
+    > .col,
+    > [class*=col-] {
+      padding: 0;
+    }
+  }
+
   .attributes-list {
-    position: absolute;
     right: 0;
-    bottom: -10px;
-    overflow-x: auto;
-    white-space: nowrap;
   }
 }
 </style>
