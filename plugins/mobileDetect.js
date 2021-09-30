@@ -25,9 +25,4 @@ export default function(ctx, inject) {
   }
 
   inject('isMobile', isMobile())
-  window.addEventListener('resize', () => {
-    setTimeout(() => {
-      ctx.$isMobile = isMobile()
-    }, 50)
-  })
 }
