@@ -36,7 +36,9 @@
     "categories": {
       "function": {
         "SubmitContactUs": {
-          "secretsPathAmplifyAppId": "d3ujfu9xzb33ha"
+          "secretsPathAmplifyAppId": "d3ujfu9xzb33ha",
+          "deploymentBucketName": "amplify-initiativetracker-production-233705-deployment",
+          "s3Key": "amplify-builds/SubmitContactUs-46507130743043727175-build.zip"
         }
       }
     }
