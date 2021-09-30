@@ -1,106 +1,15 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-amplify9fd197a6ea584-staging-211714-authRole",
-      "UnauthRoleArn": "arn:aws:iam::758946988348:role/amplify-amplify9fd197a6ea584-staging-211714-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::758946988348:role/amplify-amplify9fd197a6ea584-staging-211714-authRole",
+      "AuthRoleName": "amplify-initiativetracker-production-233705-authRole",
+      "UnauthRoleArn": "arn:aws:iam::758946988348:role/amplify-initiativetracker-production-233705-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::758946988348:role/amplify-initiativetracker-production-233705-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-      "UnauthRoleName": "amplify-amplify9fd197a6ea584-staging-211714-unauthRole",
-      "StackName": "amplify-amplify9fd197a6ea584-staging-211714",
-      "StackId": "arn:aws:cloudformation:us-west-2:758946988348:stack/amplify-amplify9fd197a6ea584-staging-211714/5474da20-fed7-11eb-aba3-0685333ae6bf",
+      "DeploymentBucketName": "amplify-initiativetracker-production-233705-deployment",
+      "UnauthRoleName": "amplify-initiativetracker-production-233705-unauthRole",
+      "StackName": "amplify-initiativetracker-production-233705",
+      "StackId": "arn:aws:cloudformation:us-west-2:758946988348:stack/amplify-initiativetracker-production-233705/149dc8f0-21a8-11ec-9268-0a755c082459",
       "AmplifyAppId": "d3ujfu9xzb33ha"
-    }
-  },
-  "api": {
-    "dungeonTools": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "SubmitContactUs",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ],
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/api/dungeonTools-cloudformation-template.json",
-        "logicalId": "apidungeonTools"
-      },
-      "lastPushTimeStamp": "2021-09-29T03:54:57.360Z",
-      "output": {
-        "ApiName": "dungeonTools",
-        "RootUrl": "https://srhe9sc067.execute-api.us-west-2.amazonaws.com/staging",
-        "ApiId": "srhe9sc067"
-      },
-      "lastPushDirHash": "BpbRCaZBHHhW0U5Bwh98igCIXo4="
-    }
-  },
-  "function": {
-    "SubmitContactUs": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "ContactUsSubmissions",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ],
-      "lastBuildTimeStamp": "2021-09-29T03:53:15.865Z",
-      "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2021-09-29T03:53:20.191Z",
-      "distZipFilename": "SubmitContactUs-46507130743043727175-build.zip",
-      "s3Bucket": {
-        "deploymentBucketName": "amplify-amplify9fd197a6ea584-staging-211714-deployment",
-        "s3Key": "amplify-builds/SubmitContactUs-46507130743043727175-build.zip"
-      },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/function/SubmitContactUs-cloudformation-template.json",
-        "logicalId": "functionSubmitContactUs"
-      },
-      "lastPushTimeStamp": "2021-09-29T03:54:57.372Z",
-      "output": {
-        "Region": "us-west-2",
-        "Arn": "arn:aws:lambda:us-west-2:758946988348:function:SubmitContactUs-staging",
-        "Name": "SubmitContactUs-staging",
-        "LambdaExecutionRole": "initiativetrackerLambdaRoled94d0b38-staging"
-      },
-      "lastPushDirHash": "bQf0U3yA4GaucdM/3oNdbW5jnNo="
-    }
-  },
-  "auth": {},
-  "storage": {
-    "ContactUsSubmissions": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplify9fd197a6ea584-staging-211714-deployment/amplify-cfn-templates/storage/ContactUsSubmissions-cloudformation-template.json",
-        "logicalId": "storageContactUsSubmissions"
-      },
-      "lastPushTimeStamp": "2021-09-29T03:54:57.364Z",
-      "output": {
-        "PartitionKeyName": "id",
-        "SortKeyName": "createdAt",
-        "SortKeyType": "S",
-        "Region": "us-west-2",
-        "Arn": "arn:aws:dynamodb:us-west-2:758946988348:table/ContactUsSubmissions-staging",
-        "StreamArn": "arn:aws:dynamodb:us-west-2:758946988348:table/ContactUsSubmissions-staging/stream/2021-09-27T04:59:24.079",
-        "PartitionKeyType": "S",
-        "Name": "ContactUsSubmissions-staging"
-      },
-      "lastPushDirHash": "+jLuJFvRaiurQLn0fpWLi0Psgu4="
     }
   }
 }

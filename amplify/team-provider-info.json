@@ -20,5 +20,25 @@
         }
       }
     }
+  },
+  "production": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-initiativetracker-production-233705-authRole",
+      "UnauthRoleArn": "arn:aws:iam::758946988348:role/amplify-initiativetracker-production-233705-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::758946988348:role/amplify-initiativetracker-production-233705-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-initiativetracker-production-233705-deployment",
+      "UnauthRoleName": "amplify-initiativetracker-production-233705-unauthRole",
+      "StackName": "amplify-initiativetracker-production-233705",
+      "StackId": "arn:aws:cloudformation:us-west-2:758946988348:stack/amplify-initiativetracker-production-233705/149dc8f0-21a8-11ec-9268-0a755c082459",
+      "AmplifyAppId": "d3ujfu9xzb33ha"
+    },
+    "categories": {
+      "function": {
+        "SubmitContactUs": {
+          "secretsPathAmplifyAppId": "d3ujfu9xzb33ha"
+        }
+      }
+    }
   }
 }
