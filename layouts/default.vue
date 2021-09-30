@@ -1,5 +1,36 @@
 <template>
   <v-app light>
+    <v-navigation-drawer
+        v-if="$device.isMobile"
+        v-model="navDrawer"
+        temporary
+        absolute
+    >
+      <v-list nav dense>
+        <v-list-item-group v-model="navDrawerActive" active-class="primary--text text--accent-4">
+          <v-list-item @click="toggleSupportUs">
+            <v-list-item-icon>
+              <v-icon>mdi-heart</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>Show some love</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item @click="toggleContactUs">
+            <v-list-item-icon>
+              <v-icon>mdi-email-edit</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>Chat with me</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
     <v-app-bar app flat="flat" color="white" class="mx-3">
       <v-img
           max-width="60"
@@ -11,30 +42,70 @@
 
       <v-spacer />
 
-      <v-btn icon color="green" @click="toggleBugReporter">
-        <v-icon>
-          mdi-ladybug
-        </v-icon>
-      </v-btn>
+      <v-app-bar-nav-icon v-if="$device.isMobile" @click.stop="navDrawer = !navDrawer"></v-app-bar-nav-icon>
 
       <v-btn
+          v-if="!$device.isMobile"
           icon
-          color="orange"
+          color="primary"
           @click="toggleSupportUs"
       >
         <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-btn
+          v-if="!$device.isMobile"
+          icon
+          color="primary"
+          @click="toggleContactUs"
+      >
+        <v-icon>mdi-email-edit</v-icon>
       </v-btn>
     </v-app-bar>
 
     <v-main>
       <Nuxt />
 
-      <BugReporter
+      <ContactUsForm
+          id="contact-us"
+          color="primary"
+          type="contact_us"
+          :active="isShowingContactUs"
+          :class="{'hidden': !isShowingContactUs}"
+          @close="isShowingContactUs = false"
+      >
+        <v-card-title>
+          Got a question? Feature Request?
+        </v-card-title>
+
+        <v-card-subtitle>
+          Let me know your thoughts. I appreciate your feedback!
+        </v-card-subtitle>
+      </ContactUsForm>
+
+      <v-overlay
+          opacity=0
+          :value="isShowingContactUs"
+          @click.native="toggleContactUs"
+      />
+
+      <ContactUsForm
           id="report-a-bug"
+          color="primary"
+          icon="ladybug"
+          type="bug_report"
           :active="isShowingBugReporter"
           :class="{'hidden': !isShowingBugReporter}"
           @close="isShowingBugReporter = false"
-      />
+      >
+        <v-card-title>
+          Found a bug?
+        </v-card-title>
+
+        <v-card-subtitle>
+          Thank you for helping improve this site by reporting issues!
+        </v-card-subtitle>
+      </ContactUsForm>
 
       <v-overlay
           opacity=0
@@ -50,11 +121,14 @@
           tile
       >
         <v-card-text>
-          &copy; {{ new Date().getFullYear() }} — <strong>Dungeon Tools</strong>
+          <span style="cursor: pointer" @click="toggleBugReporter">
+            <strong>Report a bug</strong>
+          </span>
           <br>
           <small>This site is protected by reCAPTCHA and the Google
             <a href="https://policies.google.com/privacy">Privacy Policy</a> and
             <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+            | &copy; {{ new Date().getFullYear() }} — Dungeon Tools
           </small>
         </v-card-text>
       </v-card>
@@ -63,18 +137,33 @@
 </template>
 
 <script>
+
 export default {
   data: () => ({
-    isShowingBugReporter: false
+    navDrawer: false,
+    navDrawerActive: null,
+    isShowingBugReporter: false,
+    isShowingContactUs: false
   }),
+
+  watch: {
+    navDrawerActive () {
+      this.navDrawer = false;
+    }
+  },
 
   methods: {
     toggleBugReporter () {
       this.isShowingBugReporter = !this.isShowingBugReporter
     },
 
+    toggleContactUs () {
+      this.isShowingContactUs = !this.isShowingContactUs
+    },
+
     toggleSupportUs () {
       this.isShowingBugReporter = false
+      this.isShowingContactUs = false
       document.getElementById('bmc-wbtn').click()
     }
   }
@@ -82,7 +171,7 @@ export default {
 </script>
 
 <style lang="scss">
-#report-a-bug {
+#report-a-bug, #contact-us {
   position: fixed;
   right: 18px;
   bottom: 19px;

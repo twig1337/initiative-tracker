@@ -24,7 +24,7 @@
                 <v-icon>mdi-plus</v-icon>
               </v-btn>
             </template>
-            <div>Add Combatant</div>
+            <div>Add Actor</div>
           </v-tooltip>
         </v-col>
 
@@ -136,6 +136,8 @@
                 icon
                 large
                 outlined
+                class="mt-1 ml-1 primary--text"
+                style="border-color: #e30711"
                 v-bind="attrs"
                 v-on="on"
                 @click="addInitiativeElement"
@@ -160,18 +162,12 @@ export default {
   data () {
     return {
       initiativeElements: [{ id: 1 }],
-      isMinimal: false,
+      isMinimal: this.$device.isMobile,
       isSorting: true,
       listRenders: 0,
       nextInitiativeElement: 2,
       verifyReset: false
     }
-  },
-
-  mounted () {
-    this.$nextTick(() => {
-      this.isMinimal = this.$vuetify.breakpoint.mobile = this.$vuetify.breakpoint.width < 600
-    })
   },
 
   methods: {

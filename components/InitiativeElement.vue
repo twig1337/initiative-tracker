@@ -1,7 +1,7 @@
 <template>
   <v-row :class="[
-        { 'no-gutters': $vuetify.breakpoint.mobile },
-        { 'overflow-hidden': $vuetify.breakpoint.mobile },
+        { 'no-gutters': $device.isMobile },
+        { 'overflow-hidden': $device.isMobile },
         { 'pb-2': displayAdvanced },
         'justify-space-around'
       ]"
@@ -206,6 +206,25 @@ export default {
     &:last-child, &:nth-last-child(2) {
       margin-right: 0;
     }
+  }
+
+  .attributes-list {
+    position: absolute;
+    right: 20px;
+    bottom: -10px;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media #{map-get($display-breakpoints, 'sm-and-down')} {
+  .attributes-list {
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 }
 </style>

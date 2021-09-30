@@ -1,6 +1,6 @@
 <template>
   <v-card class="ml-5">
-    <div class="d-flex flex-row-reverse green lighten-2">
+    <div :class="['d-flex flex-row-reverse', color ]">
       <v-btn
           class="float-right"
           icon
@@ -11,8 +11,8 @@
       </v-btn>
     </div>
 
-    <div class="green lighten-2 w100 text-center pb-7">
-      <v-icon class="text-h1">mdi-ladybug</v-icon>
+    <div :class="['w100 text-center pb-7', color ]">
+      <v-icon class="text-h1">mdi-{{ icon }}</v-icon>
     </div>
 
     <v-alert
@@ -34,61 +34,75 @@
       {{ formSuccess }}
     </v-alert>
 
-    <v-card-title>
-      Found a bug?
-    </v-card-title>
+    <div style="position: relative">
+      <loading
+          :active.sync="loading"
+          :is-full-page="false"
+          color="black"
+      />
 
-    <v-card-subtitle>
-      Thank you for helping improve this site by reporting issues!
-    </v-card-subtitle>
+      <slot/>
 
-    <v-card-text class="overflow-auto" style="max-height: 50vh">
-      <v-form
-          ref="form"
-          v-model="valid"
-      >
-        <v-textarea
-            v-model="description"
-            :rules="descriptionRules"
-            color="green"
-            label="Description"
-            counter
-            required
-        ></v-textarea>
+      <v-card-text class="overflow-auto" style="max-height: 50vh">
+        <v-form
+            ref="form"
+            v-model="valid"
+        >
+          <v-textarea
+              v-model="description"
+              :rules="descriptionRules"
+              :color="color"
+              label="Description"
+              counter
+              required
+          ></v-textarea>
 
-        <v-text-field
-            v-model="email"
-            :rules="emailRules"
-            color="green"
-            label="E-mail (Optional)"
-            hint="Only include if you would like a reply!"
-            persistent-hint
-        />
-      </v-form>
-    </v-card-text>
+          <v-text-field
+              v-model="email"
+              :rules="emailRules"
+              :color="color"
+              label="E-mail (Optional)"
+              hint="Only include if you would like a reply!"
+              persistent-hint
+          />
+        </v-form>
+      </v-card-text>
 
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn
-          text
-          color="green"
-          :disabled="!valid"
-          @click="submit"
-      >
-        Submit
-      </v-btn>
-    </v-card-actions>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn
+            text
+            :color="color"
+            :disabled="!valid"
+            @click="submit"
+        >
+          Submit
+        </v-btn>
+      </v-card-actions>
+    </div>
   </v-card>
 </template>
 
 <script>
 import Amplify, { API } from 'aws-amplify'
+import Loading from 'vue-loading-overlay'
 import awsconfig from '../aws-exports'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
 Amplify.configure(awsconfig)
 
 export default {
-  name: "BugReporter",
+  name: "ContactUsForm",
+
+  components: {
+    Loading
+  },
+
+  props: {
+    color: { type: String, default: 'primary' },
+    icon: { type: String, default: 'email-edit' },
+    type: { type: String, default: 'default' }
+  },
 
   data: () => ({
     valid: true,
@@ -102,7 +116,8 @@ export default {
       v => (!v || /.+@.+\..+/.test(v)) || 'E-mail must be valid',
     ],
     formErrors: [],
-    formSuccess: ''
+    formSuccess: '',
+    loading: false
   }),
 
   async mounted () {
@@ -121,14 +136,15 @@ export default {
     async submit () {
       this.formSuccess = ''
       this.formErrors = []
+      this.loading = true
 
       try {
         await API.post('dungeonTools', '/contact-us', {
           body: {
-            type: 'bug-report',
+            type: this.type,
             userEmail: this.email,
             content: this.description,
-            recaptcha: await this.$recaptcha.execute('bug_report')
+            recaptcha: await this.$recaptcha.execute(this.type)
           }
         })
 
@@ -141,6 +157,7 @@ export default {
           this.formErrors = ['Nat 1, Something broke...', 'I\'ll get right on it! Please try again in a bit!']
         }
       } finally {
+        this.loading = false
         this.$refs.form.resetValidation()
       }
     }
