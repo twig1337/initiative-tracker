@@ -198,7 +198,7 @@ export default {
     },
 
     sortInitiativeElements () {
-      this.initiativeElements = _.orderBy(_.filter(this.initiativeElements, 'initiative'), 'initiative', 'desc')
+      this.initiativeElements = _.orderBy(this.initiativeElements, ele => ele.initiative ?? 0, 'desc')
 
       this.preventEmptyList()
 

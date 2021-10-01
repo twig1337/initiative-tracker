@@ -2,9 +2,9 @@
 
 ## TODO
 
-1. Add a "report a bug and/or contact us" feature
-   1. Implement proper error handling for invalid email address / empty content etc...
-2. Instead of filtering out rows with `null` initiative during sorting, use the error messages system of inputs to callout the missing initiatives instead.
+~~1. Add a "report a bug and/or contact us" feature~~
+   ~~1. Implement proper error handling for invalid email address / empty content etc...~~
+~~2. Instead of filtering out rows with `null` initiative during sorting, use the error messages system of inputs to callout the missing initiatives instead.~~
 3. Auto generate pages for all monsters, provide link on name
 4. Save a character function
 5. Feature request form
