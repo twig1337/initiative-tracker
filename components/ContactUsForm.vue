@@ -47,6 +47,7 @@
         <v-form
             ref="form"
             v-model="valid"
+            @submit="$event.preventDefault(); submit()"
         >
           <v-textarea
               v-model="description"
@@ -134,6 +135,9 @@ export default {
 
   methods: {
     async submit () {
+      // Ensure valid input
+      if (!this.$refs.form.validate()) return;
+      
       this.formSuccess = ''
       this.formErrors = []
       this.loading = true
