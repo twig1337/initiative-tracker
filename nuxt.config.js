@@ -99,7 +99,8 @@ export default {
 
   // https://sentry.nuxtjs.org/
   sentry: {
-    dsn: 'https://2fbd55f7644845f5a4e2e130f2c8f2ce@o231239.ingest.sentry.io/5910006'
+    dsn: 'https://2fbd55f7644845f5a4e2e130f2c8f2ce@o231239.ingest.sentry.io/5910006',
+    lazy: true
   },
 
   // https://sitemap.nuxtjs.org/
