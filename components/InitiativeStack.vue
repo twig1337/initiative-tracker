@@ -8,47 +8,30 @@
           align="center"
           justify="center"
       >
-        <v-col class="col-1 d-none d-sm-flex">
-          <v-tooltip top>
-            <template #activator="{ on, attrs }">
-              <v-btn
-                  icon
-                  large
-                  outlined
-                  class="mt-1 ml-1 primary--text"
-                  style="border-color: #e30711"
-                  v-bind="attrs"
-                  v-on="on"
-                  @click="addInitiativeElement"
-              >
-                <v-icon>mdi-plus</v-icon>
-              </v-btn>
-            </template>
-            <div>Add Combatant</div>
-          </v-tooltip>
-        </v-col>
-
         <v-col>
-          <v-list :key="listRenders" class="overflow-visible py-2">
+          <v-list class="overflow-visible py-2">
             <v-list-item
-                v-for="initiativeElement in initiativeElements"
-                :key="initiativeElement.id"
+                v-for="actor in activeActorList"
+                :key="actor.id"
                 class="pa-0"
             >
-              <InitiativeElement
-                  :minimal="isMinimal"
-                  :args="initiativeElement"
+              <InitiativeActor
+                  :actor-id="actor.id"
                   class="borderless"
-                  @remove="removeInitiativeElement"
-                  @update="updateInitiativeElement"
               />
             </v-list-item>
           </v-list>
         </v-col>
       </v-row>
 
+      <v-row no-gutters justify="center">
+        <v-col class="col-sm-12 col-md-8">
+          <ActorSearch />
+        </v-col>
+      </v-row>
+
       <v-row>
-        <v-divider light :class="{ 'mx-2': isMinimal }" style="border-color: rgba(227,7,17,0.25)" />
+        <v-divider light :class="{ 'mx-2': settings.isMinimal }" style="border-color: rgba(227,7,17,0.25)" />
       </v-row>
 
       <v-row justify="end" class="pt-2">
@@ -73,15 +56,15 @@
           <template #activator="{ on, attrs }">
             <v-btn
                 icon
-                :class="{ 'primary--text': isMinimal, }"
+                :class="{ 'primary--text': settings.isMinimal, }"
                 v-bind="attrs"
                 v-on="on"
-                @click="isMinimal = !isMinimal"
+                @click="toggleMinimal"
             >
               <v-icon>mdi-arrow-collapse-vertical</v-icon>
             </v-btn>
           </template>
-          <div class="text-center">{{ isMinimal ? 'Disable' : 'Enable' }} <br /> Minimal Mode</div>
+          <div class="text-center">{{ settings.isMinimal ? 'Disable' : 'Enable' }} <br /> Minimal Mode</div>
         </v-tooltip>
 
         <!-- Reset -->
@@ -128,91 +111,52 @@
           </v-card>
         </v-dialog>
       </v-row>
-
-      <v-row justify="center" class="d-sm-none">
-        <v-tooltip top>
-          <template #activator="{ on, attrs }">
-            <v-btn
-                icon
-                large
-                outlined
-                class="mt-1 ml-1 primary--text"
-                style="border-color: #e30711"
-                v-bind="attrs"
-                v-on="on"
-                @click="addInitiativeElement"
-            >
-              <v-icon>mdi-plus</v-icon>
-            </v-btn>
-          </template>
-          <div>Add Combatant</div>
-        </v-tooltip>
-      </v-row>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import _ from 'lodash'
-import InitiativeElement from "./InitiativeElement"
+import { mapMutations, mapState } from 'vuex'
+import ActorSearch from "./ActorSearch"
+import InitiativeActor from "./InitiativeActor"
 
 export default {
   name: "InitiativeStack",
-  components: { InitiativeElement },
+  components: { InitiativeActor, ActorSearch },
   data () {
     return {
       initiativeElements: [{ id: 1 }],
-      isMinimal: false,
-      isSorting: true,
-      listRenders: 0,
       nextInitiativeElement: 2,
       verifyReset: false
     }
   },
 
+  computed: {
+    activeActorList () {
+      return this.actors
+    },
+
+    ...mapState({
+      actors: state => state.actors.list,
+      settings: state => state.settings
+    })
+  },
+
   mounted () {
     this.$nextTick(() => {
-      this.isMinimal = this.$vuetify.breakpoint.width < 600
+      this.setMinimal(this.$vuetify.breakpoint.width < 600)
     })
   },
 
   methods: {
-    addInitiativeElement () {
-      this.initiativeElements.push({ id: this.nextInitiativeElement++ })
-    },
-
-    preventEmptyList () {
-      if (!this.initiativeElements.length) {
-        this.addInitiativeElement()
-      }
-    },
-
-    removeInitiativeElement (id) {
-      this.initiativeElements = this.initiativeElements.filter(e => e.id !== id)
-
-      this.preventEmptyList()
-    },
-
     resetInitiativeElements () {
       this.initiativeElements = [{ id: this.nextInitiativeElement++ }]
     },
 
-    sortInitiativeElements () {
-      this.initiativeElements = _.orderBy(this.initiativeElements, ele => ele.initiative ?? 0, 'desc')
-
-      this.preventEmptyList()
-
-      // Force v-list re-render.
-      this.listRenders++
-    },
-
-    updateInitiativeElement (event) {
-      this.initiativeElements[this.initiativeElements.findIndex(e => e.id === event.id)] = event
-    }
+    ...mapMutations('settings', [
+      'setMinimal',
+      'toggleMinimal'
+    ])
   }
 }
 </script>
-
-<style scoped lang="scss">
-
-</style>

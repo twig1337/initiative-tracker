@@ -63,10 +63,6 @@ export default {
 
     // https://docs.amplify.aws/
     '@/plugins/amplify',
-
-    // Custom Plugins
-    '@/plugins/dnd5eapi',
-    '@/plugins/toolbox',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

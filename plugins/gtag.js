@@ -3,6 +3,7 @@ import VueGtag from 'vue-gtag'
 
 export default function ({ $config }) {
   Vue.use(VueGtag, {
-    config: { id: $config.googleAnalyticsId }
+    config: { id: $config.googleAnalyticsId },
+    bootstrap: false
   })
 }
